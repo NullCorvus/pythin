@@ -1,0 +1,149 @@
+% ============================================================
+%  ANÁLISIS NUMÉRICO O COMPUTACIONAL
+%  Fancho → Actividad 8  (Entregar)
+% ============================================================
+
+\section{Análisis Numérico o Computacional:}
+
+% ──────────────────────────────────────────────
+%  ACTIVIDAD 8  →  Fancho  (Entregar)
+% ──────────────────────────────────────────────
+
+\actividad{8} \textbf{(Entregar).} [Mix Numérico -- No Rutinario] Considere el problema
+con valor inicial:
+
+\[
+    \frac{dy}{dt} + \left(\sqrt{1+\sin^2(t)}\right)y = t, \qquad y(0)=2
+\]
+
+\begin{enumerate}
+
+    % ── Punto 1 ─────────────────────────────
+    \item Utilice la definición de integral o el Teorema Fundamental del Cálculo para
+    deducir que el factor integrante para esta ecuación diferencial se puede escribir
+    como:
+    \[
+        \mu(t) = e^{\int_0^t \sqrt{1+\sin^2(s)}\,ds};
+    \]
+    y que la solución del problema con valor inicial es:
+    \[
+        y(t) = \frac{1}{\mu(t)}\int_0^t s\,\mu(s)\,ds + \frac{2}{\mu(t)}.
+    \]
+
+    \begin{respuesta}[title=Punto 1 — Fancho]
+        % Demostración analítica del factor integrante y la fórmula de solución
+        \vspace{10cm}
+    \end{respuesta}
+
+    % ── Punto 2 ─────────────────────────────
+    \item Obtenga una aproximación de la solución en $t=1$. Utilice un método de
+    integración numérica (como la regla de Simpson) en un ciclo anidado para estimar
+    valores de $\mu(t)$, y con ello, estimar el valor de $\displaystyle\int_0^1 s\,\mu(s)\,ds$.
+
+    \smallskip
+    \noindent\textit{[Sugerencia]}: primero utilice el método de integración numérica para
+    estimar $\mu(t)$ en $t=0.1, 0.2, 0.3,\ldots,1$. Luego, utilice estos valores y
+    aplique de nuevo el método de integración numérica para aproximar
+    $\displaystyle\int_0^1 s\,\mu(s)\,ds$.
+
+    \begin{respuesta}[title=Punto 2 — Fancho]
+        % Desarrollo numérico: ciclo anidado con regla de Simpson
+        % Incluir tabla de valores de mu(t) para t = 0.1, 0.2, ..., 1
+        % y el valor aproximado de la integral y de y(1)
+
+        \textbf{Tabla de valores de $\mu(t)$:}
+        \vspace{0.3cm}
+
+        \begin{center}
+        \begin{tabular}{cccc}
+            \toprule
+            $t$ & $\sqrt{1+\sin^2(t)}$ & $\int_0^t\sqrt{1+\sin^2(s)}\,ds$ (aprox.) & $\mu(t)$ (aprox.) \\
+            \midrule
+            0.1 & & & \\
+            0.2 & & & \\
+            0.3 & & & \\
+            0.4 & & & \\
+            0.5 & & & \\
+            0.6 & & & \\
+            0.7 & & & \\
+            0.8 & & & \\
+            0.9 & & & \\
+            1.0 & & & \\
+            \bottomrule
+        \end{tabular}
+        \end{center}
+
+        \vspace{0.5cm}
+        \textbf{Estimación de $\displaystyle\int_0^1 s\,\mu(s)\,ds$:}
+        \vspace{3cm}
+
+        \textbf{Valor aproximado de $y(1)$:}
+        \vspace{2cm}
+    \end{respuesta}
+
+    % ── Punto 3 ─────────────────────────────
+    \item Utilice el método de Euler para aproximar la solución en $t=1$, con tamaños de
+    paso $h=0.1$ y $h=0.01$.
+
+    \begin{respuesta}[title=Punto 3 — Fancho]
+        % Método de Euler con h = 0.1
+        \textbf{Euler con $h = 0.1$:}
+        \vspace{0.3cm}
+
+        \begin{center}
+        \begin{tabular}{ccc}
+            \toprule
+            $n$ & $t_n$ & $y_n$ \\
+            \midrule
+            0 & 0.0 & 2.0 \\
+            1 & 0.1 & \\
+            2 & 0.2 & \\
+            3 & 0.3 & \\
+            4 & 0.4 & \\
+            5 & 0.5 & \\
+            6 & 0.6 & \\
+            7 & 0.7 & \\
+            8 & 0.8 & \\
+            9 & 0.9 & \\
+            10 & 1.0 & \\
+            \bottomrule
+        \end{tabular}
+        \end{center}
+
+        \vspace{0.5cm}
+        \textbf{Euler con $h = 0.01$:} \quad (mostrar solo resultado en $t=1$)
+        \vspace{2cm}
+    \end{respuesta}
+
+    % ── Punto 4 ─────────────────────────────
+    \item Como ingeniero: proponga una metodología para comparar la precisión y la
+    eficiencia de los esquemas numéricos en 2 y 3.
+
+    \begin{respuesta}[title=Punto 4 — Fancho]
+        % Análisis comparativo: precisión (error relativo) y eficiencia (costo computacional)
+        % Incluir: tabla comparativa de resultados, criterios de comparación propuestos,
+        % conclusión sobre cuál método es preferible y por qué.
+
+        \textbf{Tabla comparativa de resultados en $t=1$:}
+        \vspace{0.3cm}
+
+        \begin{center}
+        \begin{tabular}{lcc}
+            \toprule
+            Método & $y(1)$ aprox. & Observaciones \\
+            \midrule
+            Simpson (Punto 2)   & & \\
+            Euler $h=0.1$       & & \\
+            Euler $h=0.01$      & & \\
+            \bottomrule
+        \end{tabular}
+        \end{center}
+
+        \vspace{0.5cm}
+        \textbf{Análisis y conclusión:}
+        \vspace{6cm}
+    \end{respuesta}
+
+\end{enumerate}
+
+\newpage

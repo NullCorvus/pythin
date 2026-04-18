@@ -1,12 +1,14 @@
 % ============================================================
-%  TALLER DE PYTHON — Documento Principal
-%  Grupo: [Nombre del Grupo]
-%  Integrantes:
-%    - Integrante 1 (secciones 1-2)
-%    - Integrante 2 (secciones 3-4)
-%    - Integrante 3 (secciones 5 + portada/conclusiones)
+%  Ecuaciones Diferenciales I-2026  501-502
+%  Experiencia de Aprendizaje: EDO de Primer Orden
+%  Diego Leonardo Hernández Bustos
 %
-%  Para compilar: pdflatex main.tex  (dos veces para índice)
+%  INTEGRANTES:
+%    - David   → Repaso P1-P8 | Problemas Rutinarios Act.2 | P. No Rutinarios Act.5
+%    - Michael → Repaso P9-P15 | P. Rutinarios Act.1 | P. No Rutinarios Act.7
+%    - Fancho  → P. Rutinarios Act.3 | LEE Act.4 | P. No Rutinarios Act.6 | Análisis Act.8
+%
+%  Compilar: pdflatex main.tex  (dos veces para referencias cruzadas)
 % ============================================================
 
 \documentclass[12pt, a4paper]{article}
@@ -18,103 +20,97 @@
 \usepackage{geometry}
 \usepackage{graphicx}
 \usepackage{hyperref}
-\usepackage{listings}       % bloques de código
-\usepackage{xcolor}         % colores para el código
-\usepackage{amsmath}
-\usepackage{fancyhdr}       % encabezados y pies de página
-\usepackage{titlesec}       % estilos de secciones
-\usepackage{booktabs}       % tablas profesionales
-\usepackage{enumitem}       % listas personalizadas
-\usepackage{tcolorbox}      % cajas de respuesta
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{booktabs}
 \usepackage{setspace}
+\usepackage{xcolor}
+\usepackage{mdframed}
 
-% ── Geometría de página ─────────────────────────────────────
-\geometry{
-    top    = 2.5cm,
-    bottom = 2.5cm,
-    left   = 3cm,
-    right  = 2.5cm
-}
+\tcbuselibrary{skins, breakable, theorems}
 
-% ── Estilo de código Python ─────────────────────────────────
-\definecolor{codegreen}{rgb}{0.1,0.6,0.1}
-\definecolor{codegray}{rgb}{0.5,0.5,0.5}
-\definecolor{codepurple}{rgb}{0.58,0,0.82}
-\definecolor{backcolour}{rgb}{0.97,0.97,0.97}
+% ── Geometría ───────────────────────────────────────────────
+\geometry{top=2.5cm, bottom=2.5cm, left=3cm, right=2.5cm}
 
-\lstdefinestyle{pythonstyle}{
-    language         = Python,
-    backgroundcolor  = \color{backcolour},
-    commentstyle     = \color{codegreen},
-    keywordstyle     = \color{blue}\bfseries,
-    numberstyle      = \tiny\color{codegray},
-    stringstyle      = \color{codepurple},
-    basicstyle       = \ttfamily\small,
-    breakatwhitespace= false,
-    breaklines       = true,
-    keepspaces       = true,
-    numbers          = left,
-    numbersep        = 8pt,
-    showspaces       = false,
-    showstringspaces = false,
-    frame            = single,
-    rulecolor        = \color{gray!40},
-    tabsize          = 4,
-    captionpos       = b,
-}
-\lstset{style=pythonstyle}
-
-% ── Caja para respuestas ────────────────────────────────────
-\tcbuselibrary{skins, breakable}
-\newtcolorbox{respuesta}[1][]{
-    colback  = blue!3!white,
-    colframe = blue!40!black,
-    fonttitle= \bfseries,
-    title    = Respuesta,
-    breakable,
-    #1
-}
-
-% ── Encabezado y pie de página ──────────────────────────────
+% ── Encabezado / pie ────────────────────────────────────────
 \pagestyle{fancy}
 \fancyhf{}
-\rhead{\textit{Taller de Python}}
-\lhead{\textit{[Nombre del Grupo]}}
+\lhead{\small Ecuaciones Diferenciales I-2026 \quad 501-502}
+\rhead{\small EA: EDO de Primer Orden}
 \cfoot{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 
-% ── Metadatos del PDF ───────────────────────────────────────
-\hypersetup{
-    colorlinks = true,
-    linkcolor  = blue!70!black,
-    urlcolor   = blue,
-    pdftitle   = {Taller de Python},
-    pdfauthor  = {Grupo X},
+% ── Entorno para respuestas ─────────────────────────────────
+\newtcolorbox{respuesta}[1][]{
+    colback  = white,
+    colframe = black!40,
+    fonttitle= \bfseries\small,
+    title    = Desarrollo y Respuesta,
+    breakable,
+    before skip=6pt,
+    after skip=6pt,
+    #1
 }
+
+% ── Entorno para cajas de enunciado ─────────────────────────
+\newtcolorbox{enunciado}[2][]{
+    colback  = gray!6,
+    colframe = gray!45,
+    fonttitle= \itshape\small,
+    title    = #2,
+    breakable,
+    before skip=4pt,
+    after skip=4pt,
+    #1
+}
+
+% ── Formato de sección al estilo del taller ─────────────────
+\titleformat{\section}{\large\bfseries}{}{0em}{}[\titlerule]
+\titleformat{\subsection}{\normalsize\bfseries\itshape}{}{0em}{}
+
+% ── Macros útiles ───────────────────────────────────────────
+\newcommand{\pregunta}[1]{\par\medskip\textit{Pregunta #1.}\ }
+\newcommand{\actividad}[1]{\par\medskip\textit{Actividad #1.}\ }
+
+% ── Hypersetup ──────────────────────────────────────────────
+\hypersetup{colorlinks=true, linkcolor=blue!60!black,
+            pdftitle={EA EDO Primer Orden}, pdfauthor={Grupo 501-502}}
 
 % ============================================================
 \begin{document}
 
-% ── Portada ─────────────────────────────────────────────────
-\include{secciones/portada}
+% ── Encabezado del documento (igual al taller) ──────────────
+\begin{center}
+\begin{tabular}{@{}p{0.48\linewidth}p{0.48\linewidth}@{}}
+    Ecuaciones Diferenciales I-2026 501-502 &
+    Experiencia de Aprendizaje: EDO de Primer Orden. \\
+    Diego Leonardo Hernández Bustos. &
+    Fecha de Entrega: \underline{\hspace{3cm}} \\
+\end{tabular}
+\end{center}
+\vspace{0.3cm}
+\hrule
+\vspace{0.5cm}
 
-% ── Tabla de contenidos ─────────────────────────────────────
+{\small A continuación, encontrará una serie de actividades que sirven para reforzar,
+comprender, aplicar y medir los aprendizajes que debe alcanzar al concluir el CADI de
+Ecuaciones Diferenciales. Estas actividades se deben cargar en el Campo Multidimensional
+de Aprendizaje CMA (o aula virtual) de manera individual, de forma escrita, en formato
+pdf, y utilizando un editor de textos científicos.}
+
+\vspace{0.6cm}
 \tableofcontents
 \newpage
 
-% ── Secciones del taller ────────────────────────────────────
-%  Cada integrante edita sus propios archivos:
-%  Integrante 1 → seccion1.tex, seccion2.tex
-%  Integrante 2 → seccion3.tex, seccion4.tex
-%  Integrante 3 → seccion5.tex, conclusiones.tex
-
-\include{secciones/seccion1}
-\include{secciones/seccion2}
-\include{secciones/seccion3}
-\include{secciones/seccion4}
-\include{secciones/seccion5}
-
-% ── Conclusiones ────────────────────────────────────────────
-\include{secciones/conclusiones}
+% ── Secciones ───────────────────────────────────────────────
+\include{secciones/repaso}
+\include{secciones/rutinarios}
+\include{secciones/lectura}
+\include{secciones/no_rutinarios}
+\include{secciones/numerico}
+\include{secciones/referencias}
 
 \end{document}
