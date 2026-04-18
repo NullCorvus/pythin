@@ -1,0 +1,120 @@
+% ============================================================
+%  TALLER DE PYTHON — Documento Principal
+%  Grupo: [Nombre del Grupo]
+%  Integrantes:
+%    - Integrante 1 (secciones 1-2)
+%    - Integrante 2 (secciones 3-4)
+%    - Integrante 3 (secciones 5 + portada/conclusiones)
+%
+%  Para compilar: pdflatex main.tex  (dos veces para índice)
+% ============================================================
+
+\documentclass[12pt, a4paper]{article}
+
+% ── Paquetes ────────────────────────────────────────────────
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{listings}       % bloques de código
+\usepackage{xcolor}         % colores para el código
+\usepackage{amsmath}
+\usepackage{fancyhdr}       % encabezados y pies de página
+\usepackage{titlesec}       % estilos de secciones
+\usepackage{booktabs}       % tablas profesionales
+\usepackage{enumitem}       % listas personalizadas
+\usepackage{tcolorbox}      % cajas de respuesta
+\usepackage{setspace}
+
+% ── Geometría de página ─────────────────────────────────────
+\geometry{
+    top    = 2.5cm,
+    bottom = 2.5cm,
+    left   = 3cm,
+    right  = 2.5cm
+}
+
+% ── Estilo de código Python ─────────────────────────────────
+\definecolor{codegreen}{rgb}{0.1,0.6,0.1}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.97,0.97,0.97}
+
+\lstdefinestyle{pythonstyle}{
+    language         = Python,
+    backgroundcolor  = \color{backcolour},
+    commentstyle     = \color{codegreen},
+    keywordstyle     = \color{blue}\bfseries,
+    numberstyle      = \tiny\color{codegray},
+    stringstyle      = \color{codepurple},
+    basicstyle       = \ttfamily\small,
+    breakatwhitespace= false,
+    breaklines       = true,
+    keepspaces       = true,
+    numbers          = left,
+    numbersep        = 8pt,
+    showspaces       = false,
+    showstringspaces = false,
+    frame            = single,
+    rulecolor        = \color{gray!40},
+    tabsize          = 4,
+    captionpos       = b,
+}
+\lstset{style=pythonstyle}
+
+% ── Caja para respuestas ────────────────────────────────────
+\tcbuselibrary{skins, breakable}
+\newtcolorbox{respuesta}[1][]{
+    colback  = blue!3!white,
+    colframe = blue!40!black,
+    fonttitle= \bfseries,
+    title    = Respuesta,
+    breakable,
+    #1
+}
+
+% ── Encabezado y pie de página ──────────────────────────────
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\textit{Taller de Python}}
+\lhead{\textit{[Nombre del Grupo]}}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% ── Metadatos del PDF ───────────────────────────────────────
+\hypersetup{
+    colorlinks = true,
+    linkcolor  = blue!70!black,
+    urlcolor   = blue,
+    pdftitle   = {Taller de Python},
+    pdfauthor  = {Grupo X},
+}
+
+% ============================================================
+\begin{document}
+
+% ── Portada ─────────────────────────────────────────────────
+\include{secciones/portada}
+
+% ── Tabla de contenidos ─────────────────────────────────────
+\tableofcontents
+\newpage
+
+% ── Secciones del taller ────────────────────────────────────
+%  Cada integrante edita sus propios archivos:
+%  Integrante 1 → seccion1.tex, seccion2.tex
+%  Integrante 2 → seccion3.tex, seccion4.tex
+%  Integrante 3 → seccion5.tex, conclusiones.tex
+
+\include{secciones/seccion1}
+\include{secciones/seccion2}
+\include{secciones/seccion3}
+\include{secciones/seccion4}
+\include{secciones/seccion5}
+
+% ── Conclusiones ────────────────────────────────────────────
+\include{secciones/conclusiones}
+
+\end{document}
