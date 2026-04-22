@@ -1,0 +1,341 @@
+\textbf{\textit{Activity 7. }Computer y submit the exercises from 24 to 27 of the page 60 of [2]}
+\begin{quote}
+
+\textbf{Bernoulli Equations.} Sometimes it is possible to solve a nonlinear equation by making a change of the dependent variable that converts it into a linear equation. The most important such equation has the form
+\[
+y' + p(t)y = q(t)y^n,
+\]
+and is called a Bernoulli equation after Jakob Bernoulli. Problems 23 and 25 deal with equations of this type.
+
+
+\textbf{24. $y' = ry - ky^2$, $r > 0$ and $k > 0$. This equation is important in population dynamics and is discussed in detail in Section 2.5.}
+\begin{respuesta}
+
+\begin{theorem}
+This part was so fucking hard, so I used heavy IA to solve it, as well the time for this assignment wasn't enough, I didn't put enough time for learning the real purpose of the "Bernoulli" stuff, good reading anyway. 
+\end{theorem}
+\vspace{0.5cm}
+
+
+This is a Bernoulli equation with $p(t) = -r$, $q(t) = -k$, and $n = 2$.
+
+\textbf{Rewrite in standard Bernoulli form.}
+
+\[
+y' - ry = -ky^2
+\]
+
+\textbf{Apply the Bernoulli substitution.}
+
+Divide both sides by $y^n = y^2$:
+
+\[
+y^{-2}y' - ry^{-1} = -k
+\]
+
+Let $v = y^{1-n} = y^{-1}$, so that $v' = -y^{-2}y'$, which gives $y^{-2}y' = -v'$.
+
+Substituting:
+
+\[
+-v' - rv = -k
+\]
+
+\[
+v' + rv = k
+\]
+
+\textbf{Solve the linear equation.}
+
+This is a first-order linear ODE in $v$. The integrating factor is:
+
+\[
+\mu(t) = e^{\int r\, dt} = e^{rt}
+\]
+
+Multiplying both sides by $\mu(t)$:
+
+\[
+\frac{d}{dt}\left(e^{rt}v\right) = ke^{rt}
+\]
+
+Integrating both sides:
+
+\[
+e^{rt}v = \frac{k}{r}e^{rt} + C
+\]
+
+\[
+v = \frac{k}{r} + Ce^{-rt}
+\]
+
+\textbf{Back-substitute $v = y^{-1}$.}
+
+\[
+\frac{1}{y} = \frac{k}{r} + Ce^{-rt}
+\]
+
+\[
+\boxed{y = \frac{1}{\dfrac{k}{r} + Ce^{-rt}}}
+\]
+
+\textbf{Analyze the behavior.}
+
+As $t \to \infty$, since $r > 0$ we have $e^{-rt} \to 0$, so:
+
+\[
+y \to \frac{1}{k/r} = \frac{r}{k}
+\]
+
+This confirms that the population approaches the carrying capacity $\dfrac{r}{k}$ regardless of the initial condition (provided $y(0) > 0$), which is the hallmark of logistic growth.
+
+\end{respuesta}
+
+
+
+\textbf{25. $y' = \epsilon y - \sigma y^3$, $\epsilon > 0$ and $\sigma > 0$.}
+\begin{respuesta}
+
+This is a Bernoulli equation with $p(t) = -\epsilon$, $q(t) = -\sigma$, and $n = 3$.
+
+\textbf{Standard Bernoulli form.}
+
+\[
+y' - \epsilon y = -\sigma y^3
+\]
+
+\textbf{Bernoulli substitution.}
+
+Divide both sides by $y^n = y^3$:
+
+\[
+y^{-3}y' - \epsilon y^{-2} = -\sigma
+\]
+
+Let $v = y^{1-n} = y^{-2}$, so that $v' = -2y^{-3}y'$, which gives $y^{-3}y' = -\dfrac{v'}{2}$.
+
+Substituting:
+
+\[
+-\frac{v'}{2} - \epsilon v = -\sigma
+\]
+
+Multiplying through by $-2$:
+
+\[
+v' + 2\epsilon v = 2\sigma
+\]
+
+\textbf{Solving the linear equation.}
+
+This is a first-order linear ODE in $v$. The integrating factor is:
+
+\[
+\mu(t) = e^{\int 2\epsilon\, dt} = e^{2\epsilon t}
+\]
+
+Multiplying both sides by $\mu(t)$:
+
+\[
+\frac{d}{dt}\left(e^{2\epsilon t}v\right) = 2\sigma e^{2\epsilon t}
+\]
+
+Integrating both sides:
+
+\[
+e^{2\epsilon t}v = \frac{\sigma}{\epsilon}e^{2\epsilon t} + C
+\]
+
+\[
+v = \frac{\sigma}{\epsilon} + Ce^{-2\epsilon t}
+\]
+
+\textbf{Back-substitution $v = y^{-2}$.}
+
+\[
+\frac{1}{y^2} = \frac{\sigma}{\epsilon} + Ce^{-2\epsilon t}
+\]
+
+\[
+\boxed{y = \frac{1}{\sqrt{\dfrac{\sigma}{\epsilon} + Ce^{-2\epsilon t}}}}
+\]
+
+\textbf{Long-term behavior.}
+
+As $t \to \infty$, since $\epsilon > 0$ we have $e^{-2\epsilon t} \to 0$, so:
+
+\[
+y \to \frac{1}{\sqrt{\sigma/\epsilon}} = \sqrt{\frac{\epsilon}{\sigma}}
+\]
+
+Thus the solution approaches the equilibrium value $\sqrt{\epsilon/\sigma}$ as $t \to \infty$,
+indicating that small perturbations in the fluid flow decay toward this stable state.
+
+\end{respuesta}
+
+\noindent\textbf{Discontinuous Coefficients.} Linear differential equations sometimes occur in which one or both of the functions $p$ and $g$ have jump discontinuities. If $t_0$ is such a point of discontinuity, then it is necessary to solve the equation separately for $t < t_0$ and $t > t_0$. Afterward, the two solutions are matched so that $y$ is continuous at $t_0$; this is accomplished by a proper choice of the arbitrary constants. The following two problems illustrate this situation. Note in each case that it is impossible also to make $y'$ continuous at $t_0$.
+
+
+
+\textbf{26. Solve the initial value problem
+    \[ y' + 2y = g(t), \qquad y(0) = 0, \]
+    where
+    \[ g(t) = \begin{cases} 1, & 0 \le t \le 1, \\ 0, & t > 1. \end{cases} \]}
+\begin{respuesta}
+
+The function $g(t)$ has a jump discontinuity at $t_0 = 1$, so we solve the equation
+separately on $[0,1]$ and $(1, \infty)$, then match the solutions by requiring $y$ to be
+continuous at $t = 1$.
+
+\textbf{Integrating factor.}
+
+For both intervals the left-hand side has the same form. The integrating factor is:
+
+\[
+\mu(t) = e^{\int 2\, dt} = e^{2t}
+\]
+
+so the equation becomes in each interval:
+
+\[
+\frac{d}{dt}\left(e^{2t}y\right) = g(t)e^{2t}
+\]
+
+\textbf{Solution on $0 \le t \le 1$.}
+
+Here $g(t) = 1$, so:
+
+\[
+\frac{d}{dt}\left(e^{2t}y\right) = e^{2t}
+\]
+
+\[
+e^{2t}y = \frac{1}{2}e^{2t} + C_1
+\]
+
+\[
+y_1 = \frac{1}{2} + C_1 e^{-2t}
+\]
+
+Applying $y(0) = 0$:
+
+\[
+0 = \frac{1}{2} + C_1 \implies C_1 = -\frac{1}{2}
+\]
+
+\[
+y_1 = \frac{1}{2}\left(1 - e^{-2t}\right), \qquad 0 \le t \le 1
+\]
+
+\textbf{Solution on $t > 1$.}
+
+Here $g(t) = 0$, so:
+
+\[
+\frac{d}{dt}\left(e^{2t}y\right) = 0
+\]
+
+\[
+e^{2t}y = C_2
+\]
+
+\[
+y_2 = C_2 e^{-2t}, \qquad t > 1
+\]
+
+\textbf{Matching at $t = 1$.}
+
+We require $y$ to be continuous at $t = 1$, i.e.\ $y_1(1) = y_2(1)$:
+
+\[
+\frac{1}{2}\left(1 - e^{-2}\right) = C_2 e^{-2}
+\]
+
+\[
+C_2 = \frac{e^{2} - 1}{2}
+\]
+
+\textbf{Complete solution.}
+
+\[
+\boxed{y = \begin{cases} \dfrac{1}{2}\!\left(1 - e^{-2t}\right), & 0 \le t \le 1, \\[8pt] \dfrac{e^{2}-1}{2}\,e^{-2t}, & t > 1. \end{cases}}
+\]
+
+\textbf{Remark.} Although $y$ is continuous at $t = 1$, the derivative $y'$ is not: on
+the left $y'(1^-) = e^{-2}$, while on the right $y'(1^+) = -(e^2-1)e^{-2}$, confirming
+the observation made in the problem statement.
+
+\end{respuesta}
+
+
+\textbf{27. Solve the initial value problem
+    \[ y' + p(t)y = 0, \qquad y(0) = 1, \]
+    where
+    \[ p(t) = \begin{cases} 2, & 0 \le t \le 1, \\ 1, & t > 1. \end{cases} \]}
+\begin{respuesta}
+
+The function $p(t)$ has a jump discontinuity at $t_0 = 1$, so we solve separately on
+$[0,1]$ and $(1,\infty)$, then match at $t = 1$ by requiring continuity of $y$.
+
+\textbf{Solution on $0 \le t \le 1$.}
+
+Here $p(t) = 2$, so the equation is $y' + 2y = 0$. The integrating factor is
+$\mu(t) = e^{2t}$, giving:
+
+\[
+\frac{d}{dt}\left(e^{2t}y\right) = 0 \implies e^{2t}y = C_1 \implies y_1 = C_1 e^{-2t}
+\]
+
+Applying $y(0) = 1$:
+
+\[
+1 = C_1 \implies C_1 = 1
+\]
+
+\[
+y_1 = e^{-2t}, \qquad 0 \le t \le 1
+\]
+
+\textbf{Solution on $t > 1$.}
+
+Here $p(t) = 1$, so the equation is $y' + y = 0$. The integrating factor is
+$\mu(t) = e^{t}$, giving:
+
+\[
+\frac{d}{dt}\left(e^{t}y\right) = 0 \implies e^{t}y = C_2 \implies y_2 = C_2 e^{-t}
+\]
+
+\textbf{Matching at $t = 1$.}
+
+We require $y_1(1) = y_2(1)$:
+
+\[
+e^{-2} = C_2 e^{-1} \implies C_2 = e^{-1}
+\]
+
+\textbf{Complete solution.}
+
+\[
+\boxed{y = \begin{cases} e^{-2t}, & 0 \le t \le 1, \\[6pt] e^{-1}\,e^{-t}, & t > 1. \end{cases}}
+\]
+
+which can be written more compactly for $t > 1$ as $y = e^{-(t+1)}$.
+
+\textbf{Remark.} As expected, $y$ is continuous at $t=1$ since both pieces give
+$y(1) = e^{-2}$, but $y'$ is not: on the left $y'(1^-) = -2e^{-2}$, while on the
+right $y'(1^+) = -e^{-2}$, reflecting the jump in $p(t)$ at that point.
+
+\end{respuesta}
+
+
+
+
+
+
+
+
+
+\end{quote}
+
+
+

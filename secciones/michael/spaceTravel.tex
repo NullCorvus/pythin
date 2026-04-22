@@ -1,0 +1,379 @@
+\section*{Space Travel}
+\noindent\textbf{Question 15.} Space Travel. Fundamentals for a research experience during the course of the semester t is possible that the calculation of orbital trajectories allows connecting ODEs with a complex and scientifially relevant problem. This topc should articulate gravitational laws systems of second-order differential equations and numerical and computational methods. For this reason, I recommend starting the investigation here:
+
+\vspace{1em}
+
+\textbf{1. Can ordinary differential equatins be used to model analyze and approximate the orbital trajectory of a spacecraft for example in the Artemis II mission?}
+
+\begin{respuesta}
+    Yes. The position of a spacecraft is described by a vector $\mathbf{r}(t)$, and its motion is governed by Newton's Second Law combined with Universal Gravitation:
+
+    \[
+    \ddot{\mathbf{r}} = -\frac{\mu}{|\mathbf{r}|^3}\,\mathbf{r}, \qquad \mu = GM
+    \]
+
+    This is a second-order ODE that expands into three scalar equations in $x, y, z$. By introducing velocity components $(v_x, v_y, v_z)$, the system reduces to \textbf{6 coupled first-order ODEs}  standard initial value problem where launch position and velocity serve as initial conditions.
+
+    For a mission like Artemis, the gravitational influence of both Earth and the Moon must be included, giving the \textbf{three-body problem}:
+
+    \[
+    \ddot{\mathbf{r}} = -\frac{GM_E}{|\mathbf{r} - \mathbf{r}_E|^3}(\mathbf{r}-\mathbf{r}_E) - \frac{GM_M}{|\mathbf{r} - \mathbf{r}_M|^3}(\mathbf{r}-\mathbf{r}_M)
+    \]
+
+    This system has no closed form analytical solution which is precisely why \textbf{numerical methods} such as Runge-Kutta (RK4) are essential to approximate the trajectory computationally.
+
+    \textbf{Final answer:}
+    \begin{center}
+        \fbox{\parbox{0.8\linewidth}{\centering
+            Yes. ODEs derived from Newton's gravitational law model the spacecraft's
+            trajectory as a systm of 6 first-order equations. For Artemis II,
+            the Earth--Moon three-body interaction makes an analytical solution
+            impossible, so numerical methods like RK4 are used to approximate the orbit.
+        }}
+    \end{center}
+\end{respuesta}
+
+
+
+
+
+\textbf{2. Solve the following exercises: Exercise 3 from page 143 of [3].}
+
+Find $(\partial/\partial s)(f \circ T)(1, 0)$, where $f(u, v) = \cos u \operatorname{sin} v$ and $T(s, t) = (\cos(t^2 s), \log \sqrt{1 + s^2})$.
+\begin{respuesta}
+    We apply the \textbf{Chain Rule} for composite functions. If $T(s,t) = (u(s,t),\, v(s,t))$, then:
+
+    \[
+    \frac{\partial}{\partial s}(f \circ T) = \frac{\partial f}{\partial u}\frac{\partial u}{\partial s} + \frac{\partial f}{\partial v}\frac{\partial v}{\partial s}
+    \]
+
+    \textbf{Identify the components:}
+    \[
+    u(s,t) = \cos(t^2 s), \qquad v(s,t) = \log\sqrt{1+s^2} = \tfrac{1}{2}\log(1+s^2)
+    \]
+
+    \textbf{Partial derivatives of $f$:}
+    \[
+    \frac{\partial f}{\partial u} = -\sin u \sin v, \qquad \frac{\partial f}{\partial v} = \cos u \cos v
+    \]
+
+    \textbf{Partial derivatives of $T$ with respect to $s$:}
+    \[
+    \frac{\partial u}{\partial s} = -t^2 \sin(t^2 s), \qquad \frac{\partial v}{\partial s} = \frac{s}{1+s^2}
+    \]
+
+    \textbf{Evaluate $T$ at $(s,t) = (1,0)$:}
+    \[
+    u(1,0) = \cos(0) = 1, \qquad v(1,0) = \tfrac{1}{2}\log(2)
+    \]
+
+    \textbf{Evaluate the partial deivatives of $T$ at $(1,0)$:}
+    \[
+    \frac{\partial u}{\partial s}\Big|_{(1,0)} = -0\cdot\sin(0) = 0, \qquad \frac{\partial v}{\partial s}\Big|_{(1,0)} = \frac{1}{1+1} = \frac{1}{2}
+    \]
+
+    \textbf{Evaluate the partial derivatives of $f$ at $(u,v) = (1,\,\tfrac{1}{2}\log 2)$:}
+    \[
+    \frac{\partial f}{\partial u}\Big|_{(1,\frac{1}{2}\log 2)} = -\sin(1)\sin\!\left(\tfrac{1}{2}\log 2\right), \qquad
+    \frac{\partial f}{\partial v}\Big|_{(1,\frac{1}{2}\log 2)} = \cos(1)\cos\!\left(\tfrac{1}{2}\log 2\right)
+    \]
+
+    \textbf{Assemble the result:}
+    \[
+    \frac{\partial}{\partial s}(f\circ T)(1,0) = \left(-\sin 1\sin\tfrac{\log 2}{2}\right)(0) + \left(\cos 1\cos\tfrac{\log 2}{2}\right)\!\left(\frac{1}{2}\right)
+    \]
+
+    \[
+    = \frac{1}{2}\cos(1)\cos\!\left(\frac{\log 2}{2}\right)
+    \]
+
+    \textbf{Final answer:}
+    \begin{center}
+        \fbox{\parbox{0.8\linewidth}{\centering
+            \[
+            \frac{\partial}{\partial s}(f \circ T)(1,0) = \frac{1}{2}\cos(1)\cos\!\left(\frac{\log 2}{2}\right)
+            \]
+        }}
+    \end{center}
+\end{respuesta}
+
+
+
+
+
+
+
+
+
+
+
+
+\textbf{3. Study and perform a writen analysis of the following examples: Example 6 and 8 from pages 153 and 154 of [3] respectively.}
+
+\begin{respuesta}
+
+
+\textbf{Example 6: Gravitational Force as a Gradient Field}
+
+\textbf{Setup and Formula}\\
+
+The gravitational force on a unit mass $m$ at a point $(x, y, z) \in \mathbb{R}^3$, produced by a mass $M$ located at the origin, is given by Newton's law:
+
+\[
+\mathbf{F} = -\frac{GmM}{r^2}\mathbf{n}
+\]
+
+where:
+\begin{itemize}
+    \item $G$ is the universal gravitational constant,
+    \item $r = \|\mathbf{r}\| = \sqrt{x^2 + y^2 + z^2}$ is the distance from $(x,y,z)$ to the origin,
+    \item $\mathbf{n} = \mathbf{r}/r$ is the unit vector pointin from the origin toward $(x,y,z)$,
+    \item $\mathbf{r} = x\mathbf{i} + y\mathbf{j} + z\mathbf{k}$ is the position vector.
+\end{itemize}
+
+\textbf{Key Result: F is a Conservative Field}\\
+
+The central claim is that $\mathbf{F}$ can be expressed as the negative gradient of the gravitational potential:
+
+\[
+V = -\frac{GmM}{r}
+\]
+
+That is:
+
+\[
+\mathbf{F} = \nabla\!\left(\frac{GmM}{r}\right) = -\nabla V
+\]
+
+This means $\mathbf{F}$ is a \textit{conservative vector field} --- a fundamental concept in physics and multivariable calculus. A conservative field does no net work over any closed path, and the work done between two points depends only on the endpoints, not on the path taken.\\
+
+\textbf{Geometric Interpretation}\\
+
+Since $V = -GmM/r$, the \textbf{level surfaces} of $V$ are sets where $r = \text{const}$, i.e., \textbf{spheres centered at the origin}. By Theorem 14, the gradient $\nabla V$ is always perpendicular to the level surfaces of $V$. Therefore:
+
+\begin{quote}
+    $\mathbf{F}$ is \textbf{normal to every sphere centered at the origin}, pointing radially inward (toward $M$).
+\end{quote}
+
+This is physically intuitive: gravity pulls mass $m$ straight toward the source mass $M$, not tangentially. The force has no component along the sphere --- it is purely radial.\\
+
+\textbf{Direction of the Force}\\
+
+Note that the negative sign in $\mathbf{F} = -\nabla V$ ensures the force points \textbf{inward} (toward decreasing $r$, i.e., toward the origin where $M$ resides), consistent with the attractive nature of gravity.
+
+\subsubsection*{Example 8: Electric Field and Equipotential Surfaces}
+
+\textbf{Setup}\\
+
+ Consider two electrical conductors: one with positive charge and one with negative charge. Between them, an \textbf{electric potential} is established, described by a scalar function:
+
+\[
+\phi: \mathbb{R}^3 \to \mathbb{R}
+\]
+
+The corresponding \textbf{electric field} is defined as:
+
+\[
+\mathbf{E} = -\nabla\phi
+\]
+
+\textbf{Key Result: E is Perpendicular to Equipotential Surfaces}\\
+
+By Theorem 14, the gradient $\nabla\phi$ is perpendicular to the level surfaces of $\phi$, i.e., to the surfaces where $\phi = \text{const}$. Since $\mathbf{E} = -\nabla\phi$, it follows that:
+
+\begin{quote}
+    \textbf{The electric field $\mathbf{E}$ is perpendicular (orthogonal) to every equipotential surface.}
+\end{quote}
+
+These level surfaces $\{\phi = c\}$ are called \textit{equipotential surfaces}, because the electric potential is constant on each of them --- no work is done by the electric field when a charge moves along such a surface.\\
+
+\textbf{Geometric Interpretation (Figure 2.5.7)}\\
+
+The figure in the text illustrates this clearly:
+\begin{itemize}
+    \item The \textbf{curved closed surfaces} represent equipotential surfaces ($\phi = \text{const}$).
+    \item The \textbf{arrows labeled $\mathbf{E}$} point from the region of higher potential to the region of lower potential, always crossing the equipotential lines \textbf{at right angles}.
+    \item This orthogonality is a direct consequence of the gradient theorem.
+\end{itemize}
+
+\textbf{Physical Meaning}\\
+
+This result has deep physical significance:
+\begin{enumerate}
+    \item \textbf{No work along equipotentials:} Because $\mathbf{E} \perp$ equipotential surface, a test charge moved along such a surface experiences no force component in its direction of motion --- hence no work is done, consistenith $\phi$ being constant there.
+    \item \textbf{Field lines and equipotentials are dual structures:} The field lines of $\mathbf{E}$ and the equipotential surfaces form an orthogonal network in space, visible in Figure 2.5.7.
+    \item \textbf{Direction of $\mathbf{E}$:} The electric field points from high potential to low potential (the negative sign in $\mathbf{E} = -\nabla\phi$ ensures this), meaning positive charges are pushed from high to low potential.
+\end{enumerate}
+
+\textbf{Connecting Both Examples}
+
+Both examples are instances of the same fundamental principle:
+
+
+
+\begin{center}
+\begin{tabular}{|p{3cm}|p{5cm}|p{5cm}|}
+\hline
+\textbf{Concept} & \textbf{Example 6 (Gravity)} & \textbf{Example 8 (Electrostatics)} \\
+\hline
+Scalar potential   & $V = -GmM/r$          & $\phi: \mathbb{R}^3 \to \mathbb{R}$ \\
+Vector field       & $\mathbf{F} = -\nabla V$      & $\mathbf{E} = -\nabla\phi$ \\
+Level surfaces     & Spheres ($r = \text{const}$)  & Equipotential surfaces \\
+Field direction    & Perpendicular to spheres, inward & Perpendicular to equipotentials, high$\to$low $\phi$ \\
+Field type         & Conservative                  & Conservative \\
+\hline
+\end{tabular}
+\end{center}
+
+Both $\mathbf{F}$ and $\mathbf{E}$ are \textbf{conservative fields} expressible as gradients of scalar potentials This guarantees path-independence of work and the orthogonality of field lines to level surfaces --- a cornerstone result of vector calculus with far-reaching consequences in physics and engineering.
+
+\end{respuesta}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\textbf{4. Read Galileo on page 163 of [3] and The Potential Equation on page 164.}
+\begin{respuesta}
+\textbf{Space Travel \& Orbital Mechanics: From Fourier to Artemis}
+
+\medskip
+
+\textbf{The Mathematical Foundation}
+
+The PDF touches on something deeply relevant to modern space exploration: the universe speaks in differential equations. As the text notes, much of what we know about nature — from gravity to heat flow — can be expressed mathematically, and this is not a coincidence. Newton's law of gravitation and the calculus he developed allowed scientists to derive Kepler's three laws of planetary motion directly, which is exactly the mathematical backbone behind missions like Artemis.
+
+\medskip
+
+\textbf{The Heat Equation and Why It Matters for Space}
+
+The text introduces Fourier's heat equation:
+\[
+k\left(\frac{\partial^2 T}{\partial x^2} + \frac{\partial^2 T}{\partial y^2} + \frac{\partial^2 T}{\partial z^2}\right) = \frac{\partial T}{\partial t}
+\]
+This is not just an abstract formula, for a spacecaft like Artemis's Orion capsule, thermal management is critical — during lunar re-entry, the capsule faces extreme temperatures, engineers use exactly this type of partial differential equation to model how heat flows through the heat shield and into the capsule walls over time. The function $T(x,y,z,t)$ describes tempeture at every point in the material at every moment, and solving it numerically is what keeps astronauts alive.
+
+\medskip
+
+\textbf{The Potential Equation (Laplace's Equation)}
+
+The second major equation in the reading is Laplace's equation:
+\[
+\frac{\partial^2 V}{\partial x^2} + \frac{\partial^2 V}{\partial y^2} + \frac{\partial^2 V}{\partial z^2} = 0
+\]
+Here, $V = -GmM/r$ is the gravitational potential produced by a mass $M$ at distance $r$. This satisfies Laplace's equation everywhere except at the source mass itself. If you know the gravitational potential field around the Moon and Earth, you can determine the force on the spacecraft at every point in space via $\mathbf{F} = -\nabla V$. This is exactly how trajectory computers for Artemis work — they compute the potential field and take its gradient, and as the mission enters the gravitational influence of the Moon, the potential function shifts and the trajectory curves accordingly.
+
+\medskip
+
+\textbf{From PDEs to ODEs: Orbital Trajectories}
+
+The gravitational force law leads to a system of second-order ODEs for the spacecraft's position $\mathbf{r}(t) = (x(t), y(t), z(t))$:
+\[
+\frac{d^2\mathbf{r}}{dt^2} = -\frac{GM}{|\mathbf{r}|^3}\mathbf{r}
+\]
+This is Newton's second law applied to the gravitational force. For Artemis, this must be solved for a three-body system (Earth + Moon + spacecraft), which has no clean analytical solution — numerical methods are essential. Methods like Runge-Kutta are usd to integrate these equations step by step through time, giving of the spacecraft position and velocity at each moment of the mission.
+
+\medskip
+
+\textbf{The Big Picture}
+
+What the reading illustrates nd what this course builds toward — is that: the gravitational potential $V$ satisfies Laplace's equation and gives the force field; Newton's second law turns that force into a system of ODEs for position over time; numerical methods solve those ODEs when analytical solutions do not exist andthermal PDEs run in parallel to keep the engineering safe. Missions like Artemis are, at their mathematical core, an enormous numerical ODE/PDE slving problem. The elegance is that all of it traces back to the equations in those two pages — Fourier's nineteenth-century work on heat and Laplace's gravitational potential are still alive inside every space mission today.
+\end{respuesta}
+
+
+
+
+\textbf{5. Solve exercise 19 from page 167 of [3].}
+\begin{respuesta}
+    {Show that the Newtonian potential \(V\) (see Example 6, Section 2.5) satisfies Laplace’s equation
+\[
+\frac{\partial^2 V}{\partial x^2} + \frac{\partial^2 V}{\partial y^2} + \frac{\partial^2 V}{\partial z^2} = 0
+\quad \text{for} \quad (x,y,z) \neq (0,0,0).
+\]}
+
+{\textbf{EXAMPLE 6 - Section 2.5} \quad The gravitational force on a unit mass \(m\) at \((x,y,z)\) produced by a mass \(M\) at the origin in \(\mathbb{R}^3\), according to Newton’s law of gravitation, is given by
+\[
+\mathbf{F} = -\frac{G m M}{r^2}\,\mathbf{n},
+\]
+where \(G\) is a constant; \(r = \|\mathbf{r}\| = \sqrt{x^2 + y^2 + z^2}\) is the distance from \((x,y,z)\) to the origin; and \(\mathbf{n} = \mathbf{r}/r\), the unit vector in the direction of \(\mathbf{r} = x\mathbf{i} + y\mathbf{j} + z\mathbf{k}\), which is the position vector from the origin to \((x,y,z)\).
+
+Note that \(\mathbf{F} = \nabla\!\left(\frac{G m M}{r}\right) = -\nabla V\), that is, \(\mathbf{F}\) is the negative of the gradient of the gravitational potential \(V = -\frac{G m M}{r}\). This can be verified as in Example 1. Note that \(\mathbf{F}\) is directed inward, toward the origin. Moreover, the level surfaces of \(V\) are spheres. \(\mathbf{F}\) is normal to these spheres, which confirms the result of Theorem 14.}
+
+
+
+
+\textbf{Process:}
+
+The Newtonian potential is given by
+\[
+V = -\frac{GmM}{r}, \qquad r = \sqrt{x^2+y^2+z^2},
+\]
+where $GmM$ is a nonzero constant. Since constant factors pass through differentiation, it suffices to show that $u = \tfrac{1}{r}$ satisfies Laplace's equation for $(x,y,z)\neq(0,0,0)$.
+
+\medskip
+\text{First partial derivatives of $r$.} \; For any coordinate, say $x$:
+\[
+\frac{\partial r}{\partial x} = \frac{x}{r}.
+\]
+
+\text{First partial derivative of $u=1/r$.}
+\[
+\frac{\partial u}{\partial x}
+= -\frac{1}{r^2}\frac{\partial r}{\partial x}
+= -\frac{x}{r^3}.
+\]
+
+\text{Second partial derivative of $u$ with respect to $x$.}
+\[
+\frac{\partial^2 u}{\partial x^2}
+= \frac{\partial}{\partial x}\!\left(-\frac{x}{r^3}\right)
+= -\frac{r^3 - x\cdot 3r^2\dfrac{\partial r}{\partial x}}{r^6}
+= -\frac{r^3 - 3x^2 r}{r^6}
+= \frac{3x^2 - r^2}{r^5}.
+\]
+
+By symmetry in $x,y,z$:
+\[
+\frac{\partial^2 u}{\partial y^2} = \frac{3y^2-r^2}{r^5}, \qquad
+\frac{\partial^2 u}{\partial z^2} = \frac{3z^2-r^2}{r^5}.
+\]
+
+\text{Summing the three terms:}
+\[
+\frac{\partial^2 u}{\partial x^2}+\frac{\partial^2 u}{\partial y^2}+\frac{\partial^2 u}{\partial z^2}
+= \frac{3(x^2+y^2+z^2)-3r^2}{r^5}
+= \frac{3r^2 - 3r^2}{r^5}
+= 0,
+\]
+where we used $x^2+y^2+z^2 = r^2$. Since $V = -GmM\cdot u$, it follows immediately that
+\[
+\frac{\partial^2 V}{\partial x^2}+\frac{\partial^2 V}{\partial y^2}+\frac{\partial^2 V}{\partial z^2}
+= -GmM\left(\frac{\partial^2 u}{\partial x^2}+\frac{\partial^2 u}{\partial y^2}+\frac{\partial^2 u}{\partial z^2}\right) = 0.
+\]
+
+
+    \textbf{Final answer:}
+    \begin{center}
+        \fbox{\parbox{0.8\linewidth}{\centering
+            For $(x,y,z)\neq(0,0,0)$, writing $r=\sqrt{x^2+y^2+z^2}$ and $u=1/r$, one computes
+            $\partial^2 u/\partial x^2 = (3x^2-r^2)/r^5$
+            and its cyclic analogues. Summing gives
+            \[
+            \Delta u = \frac{3(x^2+y^2+z^2)-3r^2}{r^5} = 0,
+            \]
+            hence $\Delta V = -GmM\,\Delta u = 0$, so $V$ satisfies Laplace's equation.
+        }}
+    \end{center}
+
+\end{respuesta}
