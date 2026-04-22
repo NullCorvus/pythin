@@ -1,1 +1,25 @@
+# LaTeX auxiliary files
+*.aux
+*.log
+*.toc
+*.bbl
+*.blg
+*.out
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+
+# Build outputs
+*.pdf
+*.ps
+*.dvi
+
+# LaTeX temporary files
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Cache
 .aider*
