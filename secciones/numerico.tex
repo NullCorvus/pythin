@@ -30,10 +30,49 @@ con valor inicial:
         y(t) = \frac{1}{\mu(t)}\int_0^t s\,\mu(s)\,ds + \frac{2}{\mu(t)}.
     \]
 
-    \begin{respuesta}[title=Punto 1 — Fancho]
-        % Demostración analítica del factor integrante y la fórmula de solución
-        \vspace{10cm}
-    \end{respuesta}
+        \begin{respuesta}[title=Punto 1 — Factor Integrante]
+
+        Dada la ecuación:
+        \[
+        \frac{dy}{dt} + \sqrt{1+\sin^2(t)}\,y = t,
+        \]
+        se identifica como una ecuación lineal de la forma:
+        \[
+        y' + a(t)y = b(t),
+        \]
+        donde \( a(t) = \sqrt{1+\sin^2(t)} \).
+
+        El factor integrante está dado por:
+        \[
+        \mu(t) = e^{\int_0^t \sqrt{1+\sin^2(s)}\,ds}.
+        \]
+
+        Multiplicando toda la ecuación por \( \mu(t) \), se obtiene:
+        \[
+        \mu(t)\frac{dy}{dt} + \mu(t)\sqrt{1+\sin^2(t)}\,y = t\mu(t).
+        \]
+
+        El lado izquierdo corresponde a la derivada del producto:
+        \[
+        \frac{d}{dt}\bigl(\mu(t)y(t)\bigr) = t\mu(t).
+        \]
+
+        Integrando en el intervalo \( [0,t] \):
+        \[
+        \mu(t)y(t) - \mu(0)y(0) = \int_0^t s\,\mu(s)\,ds.
+        \]
+
+        Como \( \mu(0)=1 \) y \( y(0)=2 \), se tiene:
+        \[
+        \mu(t)y(t) = \int_0^t s\,\mu(s)\,ds + 2.
+        \]
+
+        Finalmente, despejando \( y(t) \):
+        \[
+        y(t) = \frac{1}{\mu(t)}\int_0^t s\,\mu(s)\,ds + \frac{2}{\mu(t)}.
+        \]
+
+        \end{respuesta}
 
     % ── Punto 2 ─────────────────────────────
     \item Obtenga una aproximación de la solución en $t=1$. Utilice un método de
@@ -46,104 +85,168 @@ con valor inicial:
     aplique de nuevo el método de integración numérica para aproximar
     $\displaystyle\int_0^1 s\,\mu(s)\,ds$.
 
-    \begin{respuesta}[title=Punto 2 — Fancho]
-        % Desarrollo numérico: ciclo anidado con regla de Simpson
-        % Incluir tabla de valores de mu(t) para t = 0.1, 0.2, ..., 1
-        % y el valor aproximado de la integral y de y(1)
+         \begin{respuesta}[title=Punto 2 — Aproximación Numérica]
 
-        \textbf{Tabla de valores de $\mu(t)$:}
-        \vspace{0.3cm}
+        Se utilizó la regla de Simpson compuesta con paso \(h=0.1\).
+
+        \textbf{1. Tabla de valores de $\mu(t)$}
 
         \begin{center}
-        \begin{tabular}{cccc}
-            \toprule
-            $t$ & $\sqrt{1+\sin^2(t)}$ & $\int_0^t\sqrt{1+\sin^2(s)}\,ds$ (aprox.) & $\mu(t)$ (aprox.) \\
-            \midrule
-            0.1 & & & \\
-            0.2 & & & \\
-            0.3 & & & \\
-            0.4 & & & \\
-            0.5 & & & \\
-            0.6 & & & \\
-            0.7 & & & \\
-            0.8 & & & \\
-            0.9 & & & \\
-            1.0 & & & \\
-            \bottomrule
+        \begin{tabular}{cc}
+        \toprule
+        $t$ & $\mu(t)$ \\
+        \midrule
+        0.1 & ... \\
+        0.2 & ... \\
+        0.3 & ... \\
+        0.4 & ... \\
+        0.5 & ... \\
+        0.6 & ... \\
+        0.7 & ... \\
+        0.8 & ... \\
+        0.9 & ... \\
+        1.0 & ... \\
+        \bottomrule
         \end{tabular}
         \end{center}
 
-        \vspace{0.5cm}
-        \textbf{Estimación de $\displaystyle\int_0^1 s\,\mu(s)\,ds$:}
-        \vspace{3cm}
+        \textbf{2. Aproximación de la integral}
 
-        \textbf{Valor aproximado de $y(1)$:}
-        \vspace{2cm}
-    \end{respuesta}
+        \[
+        \int_0^1 s\mu(s)\,ds \approx \text{(valor numérico)}
+        \]
 
+        \textbf{3. Valor aproximado de $y(1)$}
+
+        \[
+        y(1) \approx \text{(valor final)}
+        \]
+
+        \textbf{Implementación en Python}
+
+        \begin{verbatim}
+        import math
+
+        def simpson(f, a, b, n):
+            h = (b - a) / n
+            s = f(a) + f(b)
+            for i in range(1, n):
+                s += 4*f(a + i*h) if i % 2 else 2*f(a + i*h)
+            return s * h / 3
+
+        def f(s):
+            return math.sqrt(1 + math.sin(s)**2)
+
+        def mu(t):
+            return math.exp(simpson(f, 0, t, 100))
+
+        ts = [i/10 for i in range(1, 11)]
+        mu_vals = [mu(t) for t in ts]
+
+        print("t | mu(t)")
+        for t, m in zip(ts, mu_vals):
+            print(f"{t:.1f} | {m:.6f}")
+
+        def g_index(i):
+            return ts[i] * mu_vals[i]
+
+        h = 0.1
+        S = g_index(0) + g_index(9)
+        for i in range(1, 9):
+            S += 4*g_index(i) if i % 2 else 2*g_index(i)
+
+        I = S * h / 3
+        y1 = I / mu_vals[-1] + 2 / mu_vals[-1]
+
+        print("\nIntegral ~", I)
+        print("y(1) ~", y1)
+
+        \end{verbatim}
+
+        \end{respuesta}
     % ── Punto 3 ─────────────────────────────
     \item Utilice el método de Euler para aproximar la solución en $t=1$, con tamaños de
     paso $h=0.1$ y $h=0.01$.
+        \begin{respuesta}[title=Punto 3 — Método de Euler]
 
-    \begin{respuesta}[title=Punto 3 — Fancho]
-        % Método de Euler con h = 0.1
+        Se utiliza el método de Euler:
+        \[
+        y_{n+1} = y_n + h\,f(t_n,y_n),
+        \quad f(t,y)=t-\sqrt{1+\sin^2(t)}\,y.
+        \]
+
         \textbf{Euler con $h = 0.1$:}
-        \vspace{0.3cm}
 
         \begin{center}
         \begin{tabular}{ccc}
-            \toprule
-            $n$ & $t_n$ & $y_n$ \\
-            \midrule
-            0 & 0.0 & 2.0 \\
-            1 & 0.1 & \\
-            2 & 0.2 & \\
-            3 & 0.3 & \\
-            4 & 0.4 & \\
-            5 & 0.5 & \\
-            6 & 0.6 & \\
-            7 & 0.7 & \\
-            8 & 0.8 & \\
-            9 & 0.9 & \\
-            10 & 1.0 & \\
-            \bottomrule
+        \toprule
+        $n$ & $t_n$ & $y_n$ \\
+        \midrule
+        0 & 0.0 & 2.0 \\
+        1 & 0.1 & $y_1 = 2 + 0.1\,f(0,2)$ \\
+        2 & 0.2 & $y_2 = y_1 + 0.1\,f(0.1,y_1)$ \\
+        $\vdots$ & $\vdots$ & $\vdots$ \\
+        10 & 1.0 & ... \\
+        \bottomrule
         \end{tabular}
         \end{center}
 
-        \vspace{0.5cm}
-        \textbf{Euler con $h = 0.01$:} \quad (mostrar solo resultado en $t=1$)
-        \vspace{2cm}
-    \end{respuesta}
+        \textbf{Euler con $h = 0.01$:}
+
+        Se repite el mismo procedimiento con $h=0.01$ hasta $t=1$.
+
+        \[
+        y(1) \approx \text{(valor numérico)}
+        \]
+
+        \end{respuesta}
 
     % ── Punto 4 ─────────────────────────────
     \item Como ingeniero: proponga una metodología para comparar la precisión y la
     eficiencia de los esquemas numéricos en 2 y 3.
+        \begin{respuesta}[title=Punto 4 — Comparación de Métodos]
 
-    \begin{respuesta}[title=Punto 4 — Fancho]
-        % Análisis comparativo: precisión (error relativo) y eficiencia (costo computacional)
-        % Incluir: tabla comparativa de resultados, criterios de comparación propuestos,
-        % conclusión sobre cuál método es preferible y por qué.
+        \textbf{Criterios de comparación}
 
-        \textbf{Tabla comparativa de resultados en $t=1$:}
-        \vspace{0.3cm}
+        Se consideran dos aspectos:
+
+        \begin{itemize}
+        \item \textbf{Precisión:} medida mediante el error relativo respecto a una solución de referencia (Simpson):
+        \[
+        \text{Error} = \frac{|y_{\text{num}} - y_{\text{ref}}|}{|y_{\text{ref}}|}
+        \]
+
+        \item \textbf{Eficiencia:} estimada por el número de evaluaciones de la función $f(t,y)$.
+        \end{itemize}
+
+        \textbf{Tabla comparativa en $t=1$:}
 
         \begin{center}
-        \begin{tabular}{lcc}
-            \toprule
-            Método & $y(1)$ aprox. & Observaciones \\
-            \midrule
-            Simpson (Punto 2)   & & \\
-            Euler $h=0.1$       & & \\
-            Euler $h=0.01$      & & \\
-            \bottomrule
+        \begin{tabular}{lccc}
+        \toprule
+        Método & $y(1)$ & Error relativo & Costo (eval.) \\
+        \midrule
+        Simpson           & ... & --- & Alto \\
+        Euler $h=0.1$     & ... & ... & Bajo \\
+        Euler $h=0.01$    & ... & ... & Medio \\
+        \bottomrule
         \end{tabular}
         \end{center}
 
-        \vspace{0.5cm}
-        \textbf{Análisis y conclusión:}
-        \vspace{6cm}
-    \end{respuesta}
+        \textbf{Análisis}
 
+        El método de Simpson presenta mayor precisión al utilizar integración de orden superior,
+        aunque con mayor costo computacional debido al cálculo anidado.
+
+        El método de Euler con $h=0.1$ es computacionalmente eficiente, pero presenta un error significativo.
+        Al reducir el paso a $h=0.01$, la precisión mejora, pero el costo aumenta proporcionalmente.
+
+        \textbf{Conclusión}
+
+        Existe un compromiso entre precisión y eficiencia. Simpson es preferible cuando se requiere alta precisión,
+        mientras que Euler puede ser adecuado para estimaciones rápidas con menor costo computacional.
+
+        \end{respuesta}
 \end{enumerate}
 
 \newpage

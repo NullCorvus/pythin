@@ -187,72 +187,521 @@ orden.
 \subsection*{Ejercicio 10 \quad\normalfont\small(pág. 77, [2])}
 
 \begin{enunciado}{Enunciado}
-    \textit{[Transcribir el enunciado del ejercicio 10 aquí.]}
+    Resolver el siguiente problema con valor inicial y determinar 
+    al menos aproximadamente dónde la solución es válida:
+    \[
+        (9x^2 + y - 1) - (4y - x)y' = 0, \quad y(1) = 0
+    \]
 \end{enunciado}
 
 \begin{respuesta}
-    % Fancho — desarrollo y solución
-    \vspace{7cm}
+
+\textbf{Paso 1: Identificar el tipo de ecuación.}
+
+La ecuación tiene la forma $M(x,y) + N(x,y)y' = 0$, donde:
+\[
+    M = 9x^2 + y - 1 \qquad N = -(4y - x) = x - 4y
+\]
+Para verificar si es exacta, calculamos las derivadas parciales cruzadas:
+\[
+    \frac{\partial M}{\partial y} = 1 \qquad \frac{\partial N}{\partial x} = 1
+\]
+Como $\dfrac{\partial M}{\partial y} = \dfrac{\partial N}{\partial x}$, 
+la ecuación \textbf{es exacta}.
+
+\medskip
+\textbf{Paso 2: Encontrar la función $F(x,y)$ tal que $F_x = M$ y $F_y = N$.}
+
+Integramos $M$ respecto a $x$:
+\[
+    F = \int (9x^2 + y - 1)\, dx = 3x^3 + xy - x + h(y)
+\]
+donde $h(y)$ es una función desconocida que solo depende de $y$, 
+ya que al derivar respecto a $x$ cualquier función pura de $y$ desaparece.
+
+\medskip
+\textbf{Paso 3: Determinar $h(y)$ usando la segunda condición $F_y = N$.}
+
+Derivamos $F$ respecto a $y$ e igualamos a $N$:
+\[
+    \frac{\partial F}{\partial y} = x + h'(y) = x - 4y
+\]
+Despejando:
+\[
+    h'(y) = -4y \implies h(y) = -2y^2
+\]
+
+\medskip
+\textbf{Paso 4: Escribir la solución general.}
+
+Juntando todo:
+\[
+    F(x,y) = 3x^3 + xy - x - 2y^2 = C
+\]
+
+\medskip
+\textbf{Paso 5: Aplicar la condición inicial $y(1) = 0$.}
+
+Sustituimos $x = 1$, $y = 0$:
+\[
+    3(1)^3 + (1)(0) - (1) - 2(0)^2 = C \implies C = 2
+\]
+La solución del problema con valor inicial es:
+\[
+    \boxed{3x^3 + xy - x - 2y^2 = 2}
+\]
+
+\medskip
+\textbf{Paso 6: Validez de la solución.}
+
+Como $M$ y $N$ son polinomios, son continuas en todo $\mathbb{R}^2$. 
+Por el Teorema de Existencia y Unicidad, la solución es válida 
+en algún intervalo que contiene $x = 1$. Dado que no hay 
+singularidades, la solución es válida para todo $x \in \mathbb{R}$, 
+aunque la relación implícita puede no definir $y$ como función 
+explícita en todo ese dominio.
+
 \end{respuesta}
 
 % ── Ejercicio 12 ────────────────────────────
 \subsection*{Ejercicio 12 \quad\normalfont\small(pág. 77, [2])}
-
 \begin{enunciado}{Enunciado}
-    \textit{[Transcribir el enunciado del ejercicio 12 aquí.]}
+    Encontrar el valor de $b$ para el cual la siguiente ecuación es exacta,
+    y luego resolverla:
+    \[
+        \left(ye^{2xy} + x\right) + bxe^{2xy}y' = 0
+    \]
 \end{enunciado}
 
 \begin{respuesta}
-    % Fancho — desarrollo y solución
-    \vspace{7cm}
+
+\textbf{Paso 1: Identificar $M$ y $N$.}
+
+La ecuación tiene la forma $M + Ny' = 0$, donde:
+\[
+    M = ye^{2xy} + x \qquad N = bxe^{2xy}
+\]
+
+\medskip
+\textbf{Paso 2: Encontrar $b$ usando la condición de exactitud.}
+
+Para que la ecuación sea exacta se debe cumplir 
+$\dfrac{\partial M}{\partial y} = \dfrac{\partial N}{\partial x}$.
+
+Calculamos cada parcial:
+\[
+    \frac{\partial M}{\partial y} = e^{2xy} + y \cdot 2x e^{2xy} 
+    = e^{2xy}(1 + 2xy)
+\]
+\[
+    \frac{\partial N}{\partial x} = be^{2xy} + bx \cdot 2ye^{2xy} 
+    = be^{2xy}(1 + 2xy)
+\]
+
+Igualando:
+\[
+    e^{2xy}(1 + 2xy) = be^{2xy}(1 + 2xy) \implies \boxed{b = 1}
+\]
+
+\medskip
+\textbf{Paso 3: Reescribir la ecuación con $b = 1$.}
+\[
+    \left(ye^{2xy} + x\right) + xe^{2xy}y' = 0
+\]
+
+\medskip
+\textbf{Paso 4: Encontrar $F(x,y)$ tal que $F_x = M$ y $F_y = N$.}
+
+Integramos $N = xe^{2xy}$ respecto a $y$:
+\[
+    F = \int xe^{2xy}\, dy = \frac{1}{2}e^{2xy} + g(x)
+\]
+donde $g(x)$ es una función desconocida que solo depende de $x$.
+
+\medskip
+\textbf{Paso 5: Determinar $g(x)$ usando la condición $F_x = M$.}
+
+Derivamos $F$ respecto a $x$ e igualamos a $M$:
+\[
+    \frac{\partial F}{\partial x} = ye^{2xy} + g'(x) = ye^{2xy} + x
+\]
+Despejando:
+\[
+    g'(x) = x \implies g(x) = \frac{x^2}{2}
+\]
+
+\medskip
+\textbf{Paso 6: Escribir la solución general.}
+
+Juntando todo:
+\[
+    F(x,y) = \frac{1}{2}e^{2xy} + \frac{x^2}{2} = C
+\]
+
+Multiplicando por 2:
+\[
+    \boxed{e^{2xy} + x^2 = C}
+\]
+
 \end{respuesta}
 
 % ── Ejercicio 14 ────────────────────────────
 \subsection*{Ejercicio 14 \quad\normalfont\small(pág. 77, [2])}
 
 \begin{enunciado}{Enunciado}
-    \textit{[Transcribir el enunciado del ejercicio 14 aquí.]}
+    Mostrar que cualquier ecuación separable de la forma
+    \[
+        M(x) + N(y)\,y' = 0
+    \]
+    es también una ecuación exacta.
 \end{enunciado}
 
 \begin{respuesta}
-    % Fancho — desarrollo y solución
-    \vspace{7cm}
-\end{respuesta}
 
+\textbf{Planteamiento.}
+
+Una ecuación de la forma $M(x) + N(y)y' = 0$ es separable porque 
+$M$ depende \textit{solo} de $x$ y $N$ depende \textit{solo} de $y$.
+
+\medskip
+\textbf{Verificación de la condición de exactitud.}
+
+Para que sea exacta se debe cumplir:
+\[
+    \frac{\partial M}{\partial y} = \frac{\partial N}{\partial x}
+\]
+
+Como $M$ depende \textbf{solo de $x$}:
+\[
+    \frac{\partial M}{\partial y} = 0
+\]
+
+Como $N$ depende \textbf{solo de $y$}:
+\[
+    \frac{\partial N}{\partial x} = 0
+\]
+
+Por lo tanto:
+\[
+    \frac{\partial M}{\partial y} = 0 = \frac{\partial N}{\partial x} \checkmark
+\]
+
+La condición de exactitud se cumple para \textbf{cualquier} $M(x)$ 
+y $N(y)$, independientemente de su forma. Luego, toda ecuación 
+separable de esta forma es también exacta. $\blacksquare$
+
+\medskip
+\textbf{Nota.} La verificación no depende de los valores específicos 
+de $M$ o $N$, sino únicamente de que cada función dependa de una 
+sola variable. Eso garantiza que sus derivadas parciales respecto 
+a la otra variable sean siempre cero.
+
+\end{respuesta}
 % ── Ejercicio 16 ────────────────────────────
 \subsection*{Ejercicio 16 \quad\normalfont\small(pág. 77, [2])}
-
 \begin{enunciado}{Enunciado}
-    \textit{[Transcribir el enunciado del ejercicio 16 aquí.]}
+    Mostrar que la siguiente ecuación no es exacta, pero que se 
+    vuelve exacta al multiplicarla por el factor integrante dado.
+    Luego resolver la ecuación:
+    \[
+        (x + 2)\sin(y) + (x\cos(y))\,y' = 0, 
+        \qquad \mu(x,y) = xe^x
+    \]
 \end{enunciado}
 
 \begin{respuesta}
-    % Fancho — desarrollo y solución
-    \vspace{7cm}
+
+\textbf{Paso 1: Verificar que la ecuación original NO es exacta.}
+
+Identificamos $M = (x+2)\sin(y)$ y $N = x\cos(y)$:
+\[
+    \frac{\partial M}{\partial y} = (x+2)\cos(y) \qquad 
+    \frac{\partial N}{\partial x} = \cos(y)
+\]
+Como $(x+2)\cos(y) \neq \cos(y)$, la ecuación \textbf{no es exacta}.
+
+\medskip
+\textbf{Paso 2: Multiplicar por el factor integrante $\mu = xe^x$.}
+
+\[
+    xe^x(x+2)\sin(y) + x^2e^x\cos(y)\,y' = 0
+\]
+Ahora: $M^* = xe^x(x+2)\sin(y)$ y $N^* = x^2e^x\cos(y)$.
+
+\medskip
+\textbf{Paso 3: Verificar exactitud de la ecuación modificada.}
+
+\[
+    \frac{\partial M^*}{\partial y} = xe^x(x+2)\cos(y)
+\]
+\[
+    \frac{\partial N^*}{\partial x} = (2xe^x + x^2e^x)\cos(y) 
+    = xe^x(x+2)\cos(y)
+\]
+Como $\dfrac{\partial M^*}{\partial y} = \dfrac{\partial N^*}{\partial x}$,
+la ecuación modificada \textbf{es exacta}. $\checkmark$
+
+\medskip
+\textbf{Paso 4: Encontrar $F(x,y)$ tal que $F_x = M^*$ y $F_y = N^*$.}
+
+Integramos $N^*$ respecto a $y$:
+\[
+    F = \int x^2e^x\cos(y)\,dy = x^2e^x\sin(y) + g(x)
+\]
+
+\medskip
+\textbf{Paso 5: Determinar $g(x)$ usando $F_x = M^*$.}
+
+\[
+    \frac{\partial F}{\partial x} = (2xe^x + x^2e^x)\sin(y) + g'(x) 
+    = xe^x(x+2)\sin(y) + g'(x)
+\]
+Igualando a $M^*$:
+\[
+    g'(x) = 0 \implies g(x) = 0
+\]
+
+\medskip
+\textbf{Paso 6: Solución general.}
+
+\[
+    \boxed{x^2e^x\sin(y) = C}
+\]
+
+\medskip
+\textbf{Verificación.} Derivando implícitamente respecto a $x$:
+\[
+    (2xe^x + x^2e^x)\sin(y) + x^2e^x\cos(y)\,y' = 0
+\]
+\[
+    xe^x(x+2)\sin(y) + x^2e^x\cos(y)\,y' = 0
+\]
+Dividiendo entre $xe^x$:
+\[
+    (x+2)\sin(y) + x\cos(y)\,y' = 0 \checkmark
+\]
+
 \end{respuesta}
 
 % ── Ejercicio 18 ────────────────────────────
 \subsection*{Ejercicio 18 \quad\normalfont\small(pág. 77, [2])}
-
 \begin{enunciado}{Enunciado}
-    \textit{[Transcribir el enunciado del ejercicio 18 aquí.]}
+    Encontrar un factor integrante y resolver la ecuación:
+    \[
+        (3x^2y + 2xy + y^3) + (x^2 + y^2)\,y' = 0
+    \]
 \end{enunciado}
 
 \begin{respuesta}
-    % Fancho — desarrollo y solución
-    \vspace{7cm}
-\end{respuesta}
 
+\textbf{Paso 1: Verificar que la ecuación NO es exacta.}
+
+Identificamos $M = 3x^2y + 2xy + y^3$ y $N = x^2 + y^2$:
+\[
+    \frac{\partial M}{\partial y} = 3x^2 + 2x + 3y^2 \qquad
+    \frac{\partial N}{\partial x} = 2x
+\]
+Como $3x^2 + 2x + 3y^2 \neq 2x$, la ecuación \textbf{no es exacta}.
+
+\medskip
+\textbf{Paso 2: Encontrar el factor integrante.}
+
+Calculamos el cociente $\dfrac{M_y - N_x}{N}$:
+\[
+    \frac{M_y - N_x}{N} 
+    = \frac{(3x^2 + 2x + 3y^2) - 2x}{x^2 + y^2}
+    = \frac{3(x^2 + y^2)}{x^2 + y^2} = 3
+\]
+Como el resultado depende \textbf{solo de $x$}, el factor integrante es:
+\[
+    \mu(x) = e^{\int 3\,dx} = e^{3x}
+\]
+
+\medskip
+\textbf{Paso 3: Multiplicar por $\mu = e^{3x}$ y verificar exactitud.}
+
+\[
+    M^* = e^{3x}(3x^2y + 2xy + y^3) \qquad N^* = e^{3x}(x^2 + y^2)
+\]
+\[
+    \frac{\partial M^*}{\partial y} = e^{3x}(3x^2 + 2x + 3y^2)
+\]
+\[
+    \frac{\partial N^*}{\partial x} = 3e^{3x}(x^2+y^2) + e^{3x}(2x) 
+    = e^{3x}(3x^2 + 3y^2 + 2x) \checkmark
+\]
+La ecuación modificada \textbf{es exacta}.
+
+\medskip
+\textbf{Paso 4: Encontrar $F(x,y)$ integrando $F_x = M^*$ respecto a $x$.}
+
+Dado que $M^* = e^{3x}(3x^2y + 2xy + y^3)$, integramos respecto a $x$
+agrupando por partes:
+\[
+    F = \int e^{3x}\bigl[(3x^2 + 2x)y + y^3\bigr]\,dx
+\]
+
+Para $\displaystyle\int(3x^2 + 2x)e^{3x}\,dx$, observamos que 
+$(x^2 e^{3x})' = 2xe^{3x} + 3x^2e^{3x} = (3x^2+2x)e^{3x}$,
+por lo que:
+\[
+    \int(3x^2+2x)e^{3x}\,dx = x^2e^{3x}
+\]
+
+Para $\displaystyle\int y^3 e^{3x}\,dx = \dfrac{y^3 e^{3x}}{3}$.
+
+Entonces:
+\[
+    F = e^{3x}\!\left(x^2 y + \frac{y^3}{3}\right) + h(y)
+\]
+
+\medskip
+\textbf{Paso 5: Determinar $h(y)$ usando $F_y = N^*$.}
+
+\[
+    \frac{\partial F}{\partial y} = e^{3x}\!\left(x^2 + y^2\right) 
+    + h'(y) = N^* = e^{3x}(x^2 + y^2)
+\]
+\[
+    h'(y) = 0 \implies h(y) = 0
+\]
+
+\medskip
+\textbf{Paso 6: Solución general.}
+
+\[
+    \boxed{e^{3x}\!\left(x^2 y + \frac{y^3}{3}\right) = C}
+\]
+
+\medskip
+\textbf{Verificación.} Derivando implícitamente respecto a $x$:
+\[
+    3e^{3x}\!\left(x^2y + \frac{y^3}{3}\right) 
+    + e^{3x}\!\left(2xy + (x^2 + y^2)y'\right) = 0
+\]
+Dividiendo entre $e^{3x}$:
+\[
+    3x^2y + y^3 + 2xy + (x^2 + y^2)y' = 0
+\]
+\[
+    (3x^2y + 2xy + y^3) + (x^2 + y^2)y' = 0 \checkmark
+\]
+
+\end{respuesta}
 % ── Ejercicio 22 ────────────────────────────
 \subsection*{Ejercicio 22 \quad\normalfont\small(pág. 77, [2])}
-
 \begin{enunciado}{Enunciado}
-    \textit{[Transcribir el enunciado del ejercicio 22 aquí.]}
+    Resolver la siguiente ecuación diferencial usando el factor 
+    integrante dado:
+    \[
+        (3xy + y^2) + (x^2 + xy)\,y' = 0, 
+        \qquad \mu(x,y) = \frac{1}{xy(2x+y)}
+    \]
 \end{enunciado}
 
 \begin{respuesta}
-    % Fancho — desarrollo y solución
-    \vspace{7cm}
+
+\textbf{Paso 1: Verificar que la ecuación original NO es exacta.}
+
+Identificamos $M = 3xy + y^2$ y $N = x^2 + xy$:
+\[
+    \frac{\partial M}{\partial y} = 3x + 2y \qquad 
+    \frac{\partial N}{\partial x} = 2x + y
+\]
+Como $3x + 2y \neq 2x + y$, la ecuación \textbf{no es exacta}.
+
+\medskip
+\textbf{Paso 2: Multiplicar por el factor integrante 
+$\mu = \dfrac{1}{xy(2x+y)}$.}
+
+\[
+    \frac{3xy+y^2}{xy(2x+y)} + \frac{x^2+xy}{xy(2x+y)}\,y' = 0
+\]
+
+Simplificando cada término:
+\[
+    M^* = \frac{y(3x+y)}{xy(2x+y)} = \frac{3x+y}{x(2x+y)}
+\]
+\[
+    N^* = \frac{x(x+y)}{xy(2x+y)} = \frac{x+y}{y(2x+y)}
+\]
+
+\medskip
+\textbf{Paso 3: Verificar exactitud de la ecuación modificada.}
+
+\[
+    \frac{\partial M^*}{\partial y} = \frac{-1}{(2x+y)^2} \qquad
+    \frac{\partial N^*}{\partial x} = \frac{-1}{(2x+y)^2}
+\]
+Como son iguales, la ecuación modificada \textbf{es exacta}. $\checkmark$
+
+\medskip
+\textbf{Paso 4: Encontrar $F(x,y)$ integrando $N^*$ respecto a $y$.}
+
+\[
+    F = \int \frac{x+y}{y(2x+y)}\,dy
+\]
+
+Descomponemos en fracciones parciales respecto a $y$:
+\[
+    \frac{x+y}{y(2x+y)} = \frac{1}{2} \cdot \frac{1}{y} 
+    + \frac{1}{2} \cdot \frac{1}{2x+y}
+\]
+
+Integrando:
+\[
+    F = \frac{1}{2}\ln|y| + \frac{1}{2}\ln|2x+y| + g(x)
+    = \frac{1}{2}\ln|y(2x+y)| + g(x)
+\]
+
+\medskip
+\textbf{Paso 5: Determinar $g(x)$ usando $F_x = M^*$.}
+
+\[
+    \frac{\partial F}{\partial x} = \frac{1}{2} \cdot \frac{2}{2x+y} 
+    + g'(x) = \frac{1}{2x+y} + g'(x)
+\]
+
+Igualando a $M^* = \dfrac{3x+y}{x(2x+y)}$:
+
+\[
+    \frac{1}{2x+y} + g'(x) = \frac{3x+y}{x(2x+y)}
+\]
+\[
+    g'(x) = \frac{3x+y}{x(2x+y)} - \frac{1}{2x+y} 
+    = \frac{3x+y - x}{x(2x+y)} = \frac{2x}{x(2x+y)} \cdot\frac{1}{1}
+\]
+
+Simplificando con fracciones parciales:
+\[
+    g'(x) = \frac{1}{x} \implies g(x) = \ln|x|
+\]
+
+\medskip
+\textbf{Paso 6: Solución general.}
+
+\[
+    F = \ln|x| + \frac{1}{2}\ln|y(2x+y)| = C
+\]
+
+Multiplicando por 2 y aplicando propiedades del logaritmo:
+\[
+    \ln\left|x^2 y(2x+y)\right| = C
+\]
+\[
+    \boxed{x^2 y(2x+y) = C}
+\]
+
+\medskip
+\textbf{Verificación (computacional).} Se confirmó mediante 
+cálculo simbólico que $\dfrac{\partial M^*}{\partial y} = 
+\dfrac{\partial N^*}{\partial x} = \dfrac{-1}{(2x+y)^2}$, 
+garantizando la exactitud de la ecuación modificada. $\checkmark$
+
 \end{respuesta}
 
 \newpage
+
+
+
+

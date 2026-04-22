@@ -98,53 +98,426 @@ identificar razones y causas matemáticas para resolverlas.
 
 \actividad{6} Realizar los ejercicios del 17 al 31 de la página 40 de [2], entregar
 20, 25, 28 y 30.
-
 % ── Ejercicio 20 ────────────────────────────
 \subsection*{Ejercicio 20 \quad\normalfont\small(pág. 40, [2])}
-
 \begin{enunciado}{Enunciado}
-    \textit{[Transcribir el enunciado del ejercicio 20 aquí.]}
+    Resolver el siguiente problema con valor inicial:
+    \[
+        y' = \frac{2 - e^x}{3 + 2y}, \qquad y(0) = 0
+    \]
+    y determinar dónde la solución alcanza su valor máximo.
 \end{enunciado}
 
 \begin{respuesta}
-    % Fancho — desarrollo y solución
-    \vspace{7cm}
+
+\textbf{Paso 1: Identificar el tipo de ecuación.}
+
+La ecuación se puede escribir como:
+\[
+    (3 + 2y)\,dy = (2 - e^x)\,dx
+\]
+Como el lado izquierdo depende \textbf{solo de $y$} y el derecho 
+\textbf{solo de $x$}, la ecuación es \textbf{separable}.
+
+\medskip
+\textbf{Paso 2: Separar e integrar ambos lados.}
+
+\[
+    \int (3 + 2y)\,dy = \int (2 - e^x)\,dx
+\]
+\[
+    3y + y^2 = 2x - e^x + C
+\]
+
+\medskip
+\textbf{Paso 3: Aplicar la condición inicial $y(0) = 0$.}
+
+Sustituimos $x = 0$, $y = 0$:
+\[
+    3(0) + (0)^2 = 2(0) - e^0 + C \implies 0 = -1 + C \implies C = 1
+\]
+
+La solución implícita del PVI es:
+\[
+    \boxed{y^2 + 3y = 2x - e^x + 1}
+\]
+
+\medskip
+\textbf{Paso 4: Encontrar el máximo.}
+
+La solución alcanza su máximo cuando $y' = 0$, es decir:
+\[
+    \frac{2 - e^x}{3 + 2y} = 0 \implies 2 - e^x = 0 \implies x = \ln 2
+\]
+
+Sustituimos $x = \ln 2$ en la solución para hallar $y$:
+\[
+    y^2 + 3y = 2\ln 2 - e^{\ln 2} + 1 = 2\ln 2 - 2 + 1 = 2\ln 2 - 1
+\]
+\[
+    y^2 + 3y - (2\ln 2 - 1) = 0
+\]
+
+Usando la fórmula cuadrática:
+\[
+    y = \frac{-3 \pm \sqrt{9 + 4(2\ln 2 - 1)}}{2} 
+    = \frac{-3 \pm \sqrt{5 + 8\ln 2}}{2}
+\]
+
+Tomando la raíz positiva (consistente con $y(0) = 0$):
+\[
+    y_{\max} = \frac{-3 + \sqrt{5 + 8\ln 2}}{2} \approx 0.1237
+\]
+
+El máximo ocurre en $x = \ln 2 \approx 0.693$.
+
+\medskip
+\textbf{Verificación.} Diferenciando implícitamente $y^2 + 3y = 2x - e^x + 1$
+respecto a $x$:
+\[
+    (2y + 3)\,y' = 2 - e^x \implies y' = \frac{2 - e^x}{3 + 2y} \checkmark
+\]
+Esto coincide exactamente con la ecuación original.
+
 \end{respuesta}
 
 % ── Ejercicio 25 ────────────────────────────
 \subsection*{Ejercicio 25 \quad\normalfont\small(pág. 40, [2])}
-
 \begin{enunciado}{Enunciado}
-    \textit{[Transcribir el enunciado del ejercicio 25 aquí.]}
+    Considerar la ecuación:
+    \[
+        \frac{dy}{dx} = \frac{y - 4x}{x - y} \tag{29}
+    \]
+    \begin{enumerate}[label=\textbf{\alph*.}]
+        \item Mostrar que la ecuación es homogénea reescribiéndola como función de $y/x$.
+        \item Introducir $v = y/x$, expresar $dy/dx$ en términos de $x$, $v$ y $dv/dx$.
+        \item Mostrar que la ecuación resultante es separable.
+        \item Resolver la ecuación separable obteniendo $v$ implícitamente en términos de $x$.
+        \item Reemplazar $v$ por $y/x$ para obtener la solución.
+        \item Graficar el campo de direcciones y algunas curvas integrales.
+    \end{enumerate}
 \end{enunciado}
 
 \begin{respuesta}
-    % Fancho — desarrollo y solución
-    \vspace{7cm}
-\end{respuesta}
 
+\textbf{a. Verificar que la ecuación es homogénea.}
+
+Reescribimos dividiendo numerador y denominador entre $x$:
+\[
+    \frac{dy}{dx} = \frac{y - 4x}{x - y} 
+    = \frac{(y/x) - 4}{1 - (y/x)}
+    = F\!\left(\frac{y}{x}\right)
+\]
+Como el lado derecho depende \textbf{únicamente} del cociente $y/x$,
+la ecuación es \textbf{homogénea}. $\checkmark$
+
+\medskip
+\textbf{b. Sustitución $v = y/x$.}
+
+Sea $v = y/x$, es decir, $y = vx$. Derivando respecto a $x$:
+\[
+    \frac{dy}{dx} = v + x\frac{dv}{dx}
+\]
+
+\medskip
+\textbf{c. Ecuación separable resultante.}
+
+Sustituimos en la ecuación original:
+\[
+    v + x\frac{dv}{dx} = \frac{v - 4}{1 - v}
+\]
+\[
+    x\frac{dv}{dx} = \frac{v-4}{1-v} - v 
+    = \frac{v - 4 - v(1-v)}{1-v}
+    = \frac{v - 4 - v + v^2}{1-v}
+    = \frac{v^2 - 4}{1-v}
+\]
+La ecuación resultante es:
+\[
+    x\frac{dv}{dx} = \frac{v^2 - 4}{1 - v}
+\]
+que es \textbf{separable} porque las variables $v$ y $x$ se pueden separar.
+
+\medskip
+\textbf{d. Resolver la ecuación separable.}
+
+Separando variables:
+\[
+    \frac{1-v}{v^2 - 4}\,dv = \frac{dx}{x}
+\]
+Descomponemos en fracciones parciales con $v^2-4 = (v-2)(v+2)$:
+\[
+    \frac{1-v}{(v-2)(v+2)} = \frac{A}{v-2} + \frac{B}{v+2}
+\]
+\[
+    1-v = A(v+2) + B(v-2)
+\]
+\[
+    v = 2:\quad -1 = 4A \implies A = -\tfrac{1}{4}
+    \qquad
+    v = -2:\quad 3 = -4B \implies B = -\tfrac{3}{4}
+\]
+Integrando:
+\[
+    \int\!\left(\frac{-1/4}{v-2} + \frac{-3/4}{v+2}\right)dv = \int\frac{dx}{x}
+\]
+\[
+    -\tfrac{1}{4}\ln|v-2| - \tfrac{3}{4}\ln|v+2| = \ln|x| + C_1
+\]
+Multiplicando por $-4$:
+\[
+    \ln|v-2| + 3\ln|v+2| = -4\ln|x| + C
+\]
+\[
+    \ln\!\left|(v-2)(v+2)^3\right| = \ln\!\left|x^{-4}\right| + C
+\]
+\[
+    (v-2)(v+2)^3 = \frac{C}{x^4}
+\]
+
+\medskip
+\textbf{e. Solución en términos de $x$ e $y$.}
+
+Reemplazando $v = y/x$:
+\[
+    \left(\frac{y}{x} - 2\right)\!\left(\frac{y}{x}+2\right)^{\!3} = \frac{C}{x^4}
+\]
+\[
+    \frac{y-2x}{x}\cdot\frac{(y+2x)^3}{x^3} = \frac{C}{x^4}
+\]
+\[
+    \boxed{(y - 2x)(y + 2x)^3 = C}
+\]
+
+\medskip
+
+\textbf{e. Solución en términos de $x$ e $y$.}
+
+Reemplazando $v = y/x$:
+\[
+    \left(\frac{y}{x} - 2\right)\!\left(\frac{y}{x}+2\right)^{\!3} = \frac{C}{x^4}
+\]
+\[
+    \frac{y-2x}{x}\cdot\frac{(y+2x)^3}{x^3} = \frac{C}{x^4}
+\]
+\[
+    \boxed{(y - 2x)(y + 2x)^3 = C}
+\]
+
+\medskip
+\textbf{f. Campo de direcciones y curvas integrales.}
+
+La gráfica fue generada externamente (Python) evaluando 
+\[
+\frac{dy}{dx} = \frac{y-4x}{x-y}
+\]
+en una malla de puntos y superponiendo curvas de nivel de la solución implícita
+\[
+(y-2x)(y+2x)^3 = C.
+\]
+
+\begin{center}
+\includegraphics[width=0.75\linewidth]{images/r_25_f.png}
+\end{center}
+
+La simetría respecto al origen se verifica ya que
+\[
+(y-2x)(y+2x)^3 \xrightarrow{(x,y)\to(-x,-y)}
+(-y+2x)(-y-2x)^3 = (y-2x)(y+2x)^3
+\]
+
+\end{respuesta}
 % ── Ejercicio 28 ────────────────────────────
 \subsection*{Ejercicio 28 \quad\normalfont\small(pág. 40, [2])}
-
 \begin{enunciado}{Enunciado}
-    \textit{[Transcribir el enunciado del ejercicio 28 aquí.]}
+    Para la siguiente ecuación:
+    \begin{enumerate}[label=\textbf{\alph*.}]
+        \item Mostrar que es homogénea.
+        \item Resolver la ecuación.
+        \item Graficar el campo de direcciones y algunas curvas integrales.
+            ¿Son simétricas respecto al origen?
+    \end{enumerate}
+    \[
+        \frac{dy}{dx} = \frac{4y - 3x}{2x - y}
+    \]
 \end{enunciado}
 
 \begin{respuesta}
-    % Fancho — desarrollo y solución
-    \vspace{7cm}
-\end{respuesta}
 
+\textbf{a. Verificar homogeneidad.}
+
+Dividiendo numerador y denominador entre $x$:
+\[
+    \frac{dy}{dx} = \frac{4y - 3x}{2x - y}
+    = \frac{4(y/x) - 3}{2 - (y/x)}
+    = F\!\left(\frac{y}{x}\right)
+\]
+La expresión depende únicamente del cociente $y/x$, por lo tanto
+la ecuación es \textbf{homogénea}. $\checkmark$
+
+\medskip
+\textbf{b. Resolver la ecuación.}
+
+\textit{Sustitución:} Sea $v = y/x$, es decir, $y = vx$, de donde
+$\dfrac{dy}{dx} = v + x\dfrac{dv}{dx}$.
+
+Sustituyendo:
+\[
+    v + x\frac{dv}{dx} = \frac{4v - 3}{2 - v}
+\]
+\[
+    x\frac{dv}{dx} = \frac{4v-3}{2-v} - v
+    = \frac{4v - 3 - v(2-v)}{2-v}
+    = \frac{v^2 + 2v - 3}{2 - v}
+    = \frac{(v+3)(v-1)}{2-v}
+\]
+
+\textit{Separando variables:}
+\[
+    \frac{2-v}{(v+3)(v-1)}\,dv = \frac{dx}{x}
+\]
+
+\textit{Fracciones parciales:}
+\[
+    \frac{2-v}{(v+3)(v-1)} = \frac{A}{v+3} + \frac{B}{v-1}
+\]
+\[
+    2-v = A(v-1) + B(v+3)
+\]
+\[
+    v=1:\quad 1 = 4B \implies B = \tfrac{1}{4}
+    \qquad
+    v=-3:\quad 5 = -4A \implies A = -\tfrac{5}{4}
+\]
+
+Integrando:
+\[
+    \int\!\left(\frac{-5/4}{v+3} + \frac{1/4}{v-1}\right)dv = \int\frac{dx}{x}
+\]
+\[
+    -\tfrac{5}{4}\ln|v+3| + \tfrac{1}{4}\ln|v-1| = \ln|x| + C_1
+\]
+
+Multiplicando por 4:
+\[
+    \ln|v-1| - 5\ln|v+3| = 4\ln|x| + C
+\]
+\[
+    \ln\!\left|\frac{v-1}{(v+3)^5}\right| = \ln\!\left|x^4\right| + C
+\]
+\[
+    \frac{v-1}{(v+3)^5} = Cx^4
+\]
+
+\textit{Reemplazando $v = y/x$:}
+\[
+    \frac{y/x - 1}{(y/x + 3)^5} = Cx^4
+\qquad\Longrightarrow\qquad
+    \frac{(y-x)/x}{(y+3x)^5/x^5} = Cx^4
+\]
+\[
+    \frac{(y-x)\,x^4}{(y+3x)^5} = Cx^4
+\]
+\[
+    \boxed{\frac{y - x}{(y + 3x)^5} = C}
+\]
+
+\medskip
+\textbf{c. Campo de direcciones y curvas integrales.}
+
+Evaluando $dy/dx = (4y-3x)/(2x-y)$ en una malla se obtiene el campo de
+direcciones. Las curvas integrales corresponden a diferentes valores de $C$.
+Por ser la ecuación homogénea, las curvas son \textbf{simétricas respecto
+al origen}.
+
+\end{respuesta}
 % ── Ejercicio 30 ────────────────────────────
 \subsection*{Ejercicio 30 \quad\normalfont\small(pág. 40, [2])}
-
 \begin{enunciado}{Enunciado}
-    \textit{[Transcribir el enunciado del ejercicio 30 aquí.]}
+    Para la siguiente ecuación:
+    \begin{enumerate}[label=\textbf{\alph*.}]
+        \item Mostrar que es homogénea.
+        \item Resolver la ecuación.
+        \item Graficar el campo de direcciones y algunas curvas integrales.
+            ¿Son simétricas respecto al origen?
+    \end{enumerate}
+    \[
+        \frac{dy}{dx} = \frac{x^2 - 3y^2}{2xy}
+    \]
 \end{enunciado}
 
 \begin{respuesta}
-    % Fancho — desarrollo y solución
-    \vspace{7cm}
+
+\textbf{a. Verificar homogeneidad.}
+
+Dividiendo numerador y denominador entre $x^2$:
+\[
+    \frac{dy}{dx} = \frac{x^2 - 3y^2}{2xy}
+    = \frac{1 - 3(y/x)^2}{2(y/x)}
+    = F\!\left(\frac{y}{x}\right)
+\]
+La expresión depende únicamente del cociente $y/x$, por lo tanto
+la ecuación es \textbf{homogénea}. $\checkmark$
+
+\medskip
+\textbf{b. Resolver la ecuación.}
+
+\textit{Sustitución:} Sea $v = y/x$, es decir, $y = vx$, de donde
+$\dfrac{dy}{dx} = v + x\dfrac{dv}{dx}$.
+
+Sustituyendo:
+\[
+    v + x\frac{dv}{dx} = \frac{1 - 3v^2}{2v}
+\]
+\[
+    x\frac{dv}{dx} = \frac{1-3v^2}{2v} - v
+    = \frac{1 - 3v^2 - 2v^2}{2v}
+    = \frac{1 - 5v^2}{2v}
+\]
+
+\textit{Separando variables:}
+\[
+    \frac{2v}{1 - 5v^2}\,dv = \frac{dx}{x}
+\]
+
+\textit{Integrando el lado izquierdo} con $u = 1 - 5v^2$, $du = -10v\,dv$:
+\[
+    \int\frac{2v}{1-5v^2}\,dv = -\frac{1}{5}\ln\!\left|1 - 5v^2\right|
+\]
+
+Entonces:
+\[
+    -\frac{1}{5}\ln|1 - 5v^2| = \ln|x| + C_1
+\]
+\[
+    \ln|1 - 5v^2| = -5\ln|x| + C
+\]
+\[
+    |1 - 5v^2| = \frac{C}{x^5}
+\]
+
+\textit{Reemplazando $v = y/x$:}
+\[
+    1 - 5\frac{y^2}{x^2} = \frac{C}{x^5}
+\]
+\[
+    \frac{x^2 - 5y^2}{x^2} = \frac{C}{x^5}
+\]
+\[
+    x^5(x^2 - 5y^2) = C\,x^2
+\]
+\[
+    \boxed{x^3(x^2 - 5y^2) = C}
+\]
+
+\medskip
+\textbf{c. Campo de direcciones y curvas integrales.}
+
+Evaluando $dy/dx = (x^2-3y^2)/(2xy)$ en una malla se obtiene el campo de
+direcciones. Las curvas $x^3(x^2-5y^2) = C$ para distintos valores de $C$
+forman las curvas integrales. Por ser la ecuación homogénea, las curvas son
+\textbf{simétricas respecto al origen}.
+
 \end{respuesta}
 
 \newpage
