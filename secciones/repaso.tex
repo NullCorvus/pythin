@@ -17,7 +17,29 @@ que deben tener en cuenta para iniciar este curso.
 \pregunta{1} ¿Qué es y para qué sirve un factor integrante?
 
 \begin{respuesta}
-    % David escribe aquí
+
+Qué es y para qué sirve un factor integrante?
+\\
+El factor integrante es una función que se utiliza en ecuaciones diferenciales de primer orden para hacer mas sencilla la solución, su objetivo es transformar una ecuación que no se puede resolver directamente en una forma más sencilla, generalmente una ecuación exacta o integrable, que son las que vimos el clase y en donde aplicamos este metodo.
+
+En el caso de ecuaciones lineales de la forma:
+\[
+\frac{dy}{dx} + P(x)y = Q(x)
+\]
+el factor integrante se define como:
+\[
+\mu(x) = e^{\int P(x)\,dx}
+\]
+
+Al multiplicar toda la ecuación por $\mu(x)$, esta se puede reescribir como:
+\[
+\frac{d}{dx} \big( \mu(x)\,y \big) = \mu(x)\,Q(x)
+\]
+
+lo que permite integrar directamente y encontrar la solución de manera más sencilla.
+
+Este también aplica a las exactas que lo que hace es transformar una ecuación NO exacta a una exacta al aplicar el factor integrante y hallar el valor del mismo que al derivarse se convierte en una exacta.
+
     \vspace{5cm}
 \end{respuesta}
 
@@ -25,7 +47,25 @@ que deben tener en cuenta para iniciar este curso.
 como ecuaciones diferenciales ordinarias?
 
 \begin{respuesta}
-    % David escribe aquí
+
+ 
+Un modelo matemático es básicamente una forma de representar un situación real usando matemáticas, se toma algo que cambie con respecto al tiempo y se convierte en una ecuaciones, funciones o formulas para poder entenderlo bien y poder predecirlo o al menos intentar predecir como cambia con respecto al tiempo.
+
+Un modelo matemático que no se me olvida, es el que vimos las primeras clases de ecuaciones diferenciales propiamente, el modelo de interes compuesto
+La ecuación diferencial que lo representa es:
+\[
+\frac{dA}{dt} = rA
+\]
+donde $A(t)$ es la cantidad de dinero en el tiempo $t$, y $r$ es la tasa de interés.
+
+La solución de esta ecuación es:
+\[
+A(t) = A_0 e^{rt}
+\]
+donde $A_0$ es la cantidad inicial de dinero.
+
+Este modelo permite predecir el crecimiento del capital a lo largo del tiempo de forma continua.
+
     \vspace{5cm}
 \end{respuesta}
 
@@ -33,21 +73,71 @@ como ecuaciones diferenciales ordinarias?
 diferenciales ordinarias de primer orden, que se repasaron en la dimensión aula?
 
 \begin{respuesta}
-    % David escribe aquí
+
+En total hemos visto en clase 4 métodos de los cuales 3 son analíticos, estos son:
+\vspace{0.2cm}
+* Factor integrante: del que se hablo en el punto anterior que es sobre una función que se multiplica a todos lados y simplifica la ecuación, sin mas no profundizare en ello pues ya lo hice en el punto anterior
+\vspace{0.1cm}
+* Ecuaciones separables: Son en las que las variables pueden separarse en distintos lados de la ecuación, Son: 
+
+\[
+\frac{dy}{dx} = g(x)\,h(y)
+\]
+
+y pueden reorganizarse como:
+
+\[
+\frac{1}{h(y)}\,dy = g(x)\,dx
+\]
+
+lo que permite integrar ambos lados para encontrar la solución
+
+* Ecuaciones exactas: las ultimas vistas en clase hasta ahora estas tienen la forma:
+
+\[
+M(x,y)\,dx + N(x,y)\,dy = 0
+\]
+
+y cumplen una condición que permite expresar la ecuación como la derivada de una función, esto facilita encontrar la solución de manera directa mediante integración y en caso de no ser exacta se puede transformar a través de un factor integrante.
+
     \vspace{5cm}
 \end{respuesta}
 
 \pregunta{4} ¿Qué es un campo escalar y qué es un campo vectorial?
 
 \begin{respuesta}
-    % David escribe aquí
+El campo escalar y el campo vectorial se definen sobre un espacio, el cual puede ser una recta, un plano o el espacio tridimensional, es decir, $\mathbb{R}$, $\mathbb{R}^2$ o $\mathbb{R}^3$ que son los espacios que hemos visto en clase, las dimensiones, vaya; en este espacio representamos el conjunto de puntos donde se estudia el comportamiento de una magnitud .
+
+Un campo escalar es una función que asigna un valor numérico a cada punto de ese espacio, Es decir, a cada punto le corresponde un número, algunos ejemplos son la temperatura, la presión o la altura en un terreno.
+
+Matemáticamente, se expresa como:
+\[
+f: \mathbb{R}^n \rightarrow \mathbb{R}
+\]
+
+Por otro lado, un campo vectorial es una función que asigna un vector a cada punto del espacio, es decir, una magnitud con dirección y sentido, ejemplos de esto son la velocidad del viento o el campo eléctrico.
+
+Matemáticamente, se representa como:
+\[
+\vec{F}: \mathbb{R}^n \rightarrow \mathbb{R}^n
+\]
     \vspace{5cm}
 \end{respuesta}
 
 \pregunta{5} ¿Qué son curvas de nivel?
 
 \begin{respuesta}
-    % David escribe aquí
+Las curvas de nivel son líneas que unen puntos donde una función tiene el mismo valor, es decir, todos los puntos que están sobre una misma curva comparten un mismo número.
+
+Si se tiene una función de dos variables $f(x,y)$, las curvas de nivel se obtienen al igualarla a una constante:
+
+\[
+f(x,y) = c
+\]
+
+donde $c$ es un valor fijo. Cada valor de $c$ genera una curva diferente, de dopnde se toman los puntos y se muestra la curva de nivel, en clase quedo muy claro gracias a geogebra.
+
+Estas curvas sirven para entender mejor cómo se comporta una función de varias variables. Un ejemplo muy claro es la topografía, donde se usan para representar la altura del terreno en mapas. En este caso, cada curva muestra una misma elevación, lo que permite ver fácilmente montañas, valles y la forma del terreno.
     \vspace{5cm}
 \end{respuesta}
 
@@ -55,14 +145,51 @@ diferenciales ordinarias de primer orden, que se repasaron en la dimensión aula
 curvas de nivel?
 
 \begin{respuesta}
-    % David escribe aquí
+El vector gradiente es un vector que indica hacia dónde crece más rápido una función y qué tan rápido lo hace, se construye a partir de las derivadas parciales de la función.
+
+Para una función $f(x,y)$, el gradiente se define como:
+\[
+\nabla f = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y} \right)
+\]
+
+La dirección del gradiente muestra hacia dónde aumenta más la función, mientras que su magnitud indica qué tan rápido crece.
+
+La relación con las curvas de nivel es que el vector gradiente siempre es perpendicular a ellas, esto ocurre porque sobre una curva de nivel el valor de la función no cambia, mientras que el gradiente apunta justamente en la dirección donde ese valor aumenta.
+
+En otras palabras, si uno se mueve siguiendo una curva de nivel no sube ni baja, pero si sigue la dirección del gradiente, va directamente hacia la mayor subida.
     \vspace{5cm}
 \end{respuesta}
 
 \pregunta{7} ¿La función $f(x,y) = x^2 + y^2$ tiene un máximo o mínimo global?
 
 \begin{respuesta}
-    % David escribe aquí
+La función $f(x,y) = x^2 + y^2$ tiene un mínimo global, pero no tiene un máximo global.
+
+Esto pasa porque $x^2$ y $y^2$ siempre son mayores o iguales a cero, entonces:
+\[
+f(x,y) \geq 0
+\]
+para cualquier punto del plano. El valor más pequeño que puede tomar la función es $0$, y eso ocurre en el punto $(0,0)$.
+
+Si miramos las curvas de nivel:
+\[
+x^2 + y^2 = c
+\]
+vemos que son círculos centrados en el origen. Entre más grande es $c$, más lejos está el círculo del origen, lo que significa que el valor de la función va creciendo a medida que uno se aleja.
+
+Además, el gradiente de la función es:
+\[
+\nabla f = (2x, 2y)
+\]
+y este apunta hacia afuera desde el origen, lo que indica que la función crece en todas las direcciones a partir de ese punto.
+
+Por otro lado, si $x$ y $y$ siguen creciendo, la función también crece sin límite:
+\[
+x^2 + y^2 \rightarrow \infty
+\]
+por lo que no existe un valor máximo.
+
+En conclusión, la función tiene un mínimo global en $(0,0)$ y no tiene máximo global porque crece indefinidamente.
     \vspace{5cm}
 \end{respuesta}
 
@@ -174,43 +301,273 @@ investigación por aquí:
     % ── Subpuntos 6–12  →  David ────────────────
     \item Revisar y presentar un análisis escrito del ejemplo 7 de la página 197 en [3].
 
-    \begin{respuesta}[title=P15.6 — David]
+    \begin{respuesta}[title=P15.6]
+
+    El Ejemplo 7 considera una partícula de masa $m$ que se mueve con rapidez
+\emph{constante} $S$ sobre una trayectoria circular de radio $r_0$ en el plano
+$xy$ Como se mueve en un círculo, podemos escribir su posición como
+\[
+  \mathbf{r}(t)
+  = \left(r_0\cos\frac{tS}{r_0},\; r_0\operatorname{sen}\frac{tS}{r_0}\right),
+\]
+de modo que $\|\mathbf{r}'(t)\| = S$ (rapidez constante, tal como pedimos).
+La aceleración es
+\[
+  \mathbf{a}(t) = \mathbf{r}''(t)
+  = \left(-\frac{S^2}{r_0}\cos\frac{tS}{r_0},\;
+           -\frac{S^2}{r_0}\operatorname{sen}\frac{tS}{r_0}\right)
+  = -\frac{S^2}{r_0^2}\,\mathbf{r}(t).
+\]
+La aceleración apunta hacia el centro del círculo y eso es la
+aceleración centrípeta, y la fuerza correspondiente $\mathbf{F}=m\mathbf{a}$
+se llama fuerza centrípeta.
+
+Entonces, si este sistema modela un satélite de masa $m$ orbitando un cuerpo
+central de masa $M$, la ley de Newton de gravitación nos dice
+\[
+  m\mathbf{r}''(t) = -\frac{GmM}{r^3}\,\mathbf{r}(t).
+\]
+Comparando magnitudes con la expresión anterior obtenemos
+\[
+  \frac{S^2}{r_0^2} = \frac{GM}{r_0^3}
+  \quad\Longrightarrow\quad
+  S^2 = \frac{GM}{r_0}.
+\]
+Si $T$ es el período de una revolución, entonces $S = 2\pi r_0 / T$.
+y pues ya sustituyendo:
+\[
+  \left(\frac{2\pi r_0}{T}\right)^2 = \frac{GM}{r_0}
+  \quad\Longrightarrow\quad
+  \boxed{T^2 = \frac{(2\pi)^2}{GM}\,r_0^3.}
+\]
+Entonces quedamos con que el cuadrado del período es proporcional al cubo del
+radio orbital, esto es exactamente la Tercera Ley de Kepler,
+deducida aquí a partir de la segunda ley de Newton y el modelo de órbita
+circular.  Para la misión Artemis II, por ejemplo, esta relación permite
+calcular el tiempo que tarda la cápsula en completar una vuelta a la Luna
+conociendo solo el radio de su órbita.
         \vspace{5cm}
     \end{respuesta}
 
     \item Revisar y presentar un análisis escrito del ejemplo 9 la página 200 en [3].
 
-    \begin{respuesta}[title=P15.7 — David]
+    \begin{respuesta}[title=P15.7 ]
+    vamos a realizar un analisis numerico, y ya de ahi interpretamos queremos el período de un satélite que
+orbita a $500\,\text{km}$ sobre la superficie terrestre, el radio de la Tierra
+es $R_T = 6{,}37\times10^3\,\text{km}$, así que el radio orbital es
+\[
+  r_0 = (6{,}37 + 0{,}5)\times10^6\,\text{m}
+      = 6{,}87\times10^6\,\text{m}.
+\]
+Con $G = 6{,}67\times10^{-11}\,\text{N·m}^2/\text{kg}^2$ y
+$M = 5{,}98\times10^{24}\,\text{kg}$:
+\[
+  T^2 = \frac{(2\pi)^2}{GM}\,r_0^3
+      = \frac{4\pi^2}{(6{,}67\times10^{-11})(5{,}98\times10^{24})}
+        \,(6{,}87\times10^6)^3.
+\]
+Calculando paso a paso:
+\begin{align*}
+  GM &= 3{,}984\times10^{14}\,\text{m}^3/\text{s}^2,\\
+  r_0^3 &= (6{,}87)^3\times10^{18} \approx 3{,}241\times10^{20}\,\text{m}^3,\\
+  T^2 &= \frac{4\pi^2 \cdot 3{,}241\times10^{20}}{3{,}984\times10^{14}}
+        \approx 3{,}207\times10^7\,\text{s}^2,\\
+  T &\approx 5{,}663\times10^3\,\text{s} \approx \mathbf{94{,}4\,\text{min}}.
+\end{align*}
+Entonces que es lo que vemos en el ejercicio, un satélite en órbita baja (a solo 500 km de altura)
+da una vuelta completa a la Tierra en poco menos de hora y media.
+Esto concuerda con las órbitas reales de satélites LEO como los de la
+constelación Starlink, que es un ejemplazo para eso, un poco breve el analisis escrito, pero es mas sencillo ir resolviendo las ecuaciones, y dar una conclusion con ejercicios asi, haremos esos con los siguientes que exijan mas rigurosidad matematica.
         \vspace{5cm}
     \end{respuesta}
 
     \item Revisar y presentar un análisis escrito del Ejemplo 14 de la página 201 en [3].
 
-    \begin{respuesta}[title=P15.8 — David]
+    \begin{respuesta}[title=P15.8 ]
+
+este dice que $\boldsymbol{\sigma}(t)$ es la trayectoria de una
+partícula, $\mathbf{v}(t)=\boldsymbol{\sigma}'(t)$ su velocidad y
+$\mathbf{a}(t)=\boldsymbol{\sigma}''(t)$ su aceleración, con
+$\mathbf{F}(\boldsymbol{\sigma}(t))=m\mathbf{a}(t)$ (Segunda Ley de Newton),
+entonces
+\[
+  \frac{d}{dt}\bigl[m\boldsymbol{\sigma}(t)\times\mathbf{v}(t)\bigr]
+  = \boldsymbol{\sigma}(t)\times\mathbf{F}(\boldsymbol{\sigma}(t)).
+\]
+
+la regla del producto para la derivada del producto vectorial:
+\[
+  \frac{d}{dt}\bigl[\boldsymbol{\sigma}(t)\times\mathbf{v}(t)\bigr]
+  = \mathbf{v}(t)\times\mathbf{v}(t) + \boldsymbol{\sigma}(t)\times\mathbf{a}(t)
+  = \mathbf{0} + \boldsymbol{\sigma}(t)\times\mathbf{a}(t),
+\]
+donde usamos que $\mathbf{v}\times\mathbf{v}=\mathbf{0}$ siempre.
+Multiplicando por $m$ y usando $\mathbf{F}=m\mathbf{a}$:
+\[
+  \frac{d}{dt}\bigl[m\boldsymbol{\sigma}(t)\times\mathbf{v}(t)\bigr]
+  = \boldsymbol{\sigma}(t)\times m\mathbf{a}(t)
+  = \boldsymbol{\sigma}(t)\times\mathbf{F}(\boldsymbol{\sigma}(t)).
+\]
+
+
+La cantidad $\mathbf{L}=m\boldsymbol{\sigma}(t)\times\mathbf{v}(t)$ se llama
+momento angular y la ecuación que demostramos dice que la tasa de
+cambio del momento angular es igual a la torca (o torque)
+$\boldsymbol{\sigma}\times\mathbf{F}$.
+
         \vspace{5cm}
     \end{respuesta}
 
     \item Revisar y presentar un análisis escrito del Ejemplo 3 de la página 213 en [3].
 
-    \begin{respuesta}[title=P15.9 — David]
+    \begin{respuesta}[title=P15.9 ]
+
+l ejemplo modela la fuerza gravitacional de la Tierra sobre una masa $m$
+como un campo vectorial en $\mathbb{R}^3$:
+%
+\begin{equation}
+    \mathbf{F} = -\frac{mMG}{r^3}\,\mathbf{r},
+    \qquad
+    \mathbf{F}(x,y,z) = \frac{-mMG}{r^3}(x,\,y,\,z),
+\end{equation}
+%
+con $r = \|\mathbf{r}\|$. El signo negativo asegura que la fuerza apunta
+\emph{hacia} el origen, y el factor $1/r^3$ junto con $\mathbf{r}$
+equivale a $\hat{\mathbf{r}}/r^2$, recuperando la clásica \emph{ley del
+cuadrado inverso}.
+ 
+El resultado clave es que $\mathbf{F}$ es un \emph{campo gradiente}:
+%
+\begin{equation}
+    \mathbf{F} = -\nabla V, \qquad V = -\frac{mMG}{r},
+\end{equation}
+%
+lo que lo convierte en un campo \emph{conservativo}: el trabajo realizado
+entre dos puntos depende solo de las posiciones, no del camino. Esta
+propiedad —que conecta con el Ejemplo~6 de la Sección~2.5— es la razón
+por la que en mecánica tiene sentido hablar de energía potencial
+gravitacional.
         \vspace{5cm}
     \end{respuesta}
 
     \item Resolver el ejercicio 1 de la página 219 en [3].
 
-    \begin{respuesta}[title=P15.10 — David]
+    \begin{respuesta}[title=P15.10]
+
+entonces este nos dice que:
+
+Sea una partícula de masa $m$ que se mueve sobre una trayectoria $\mathbf{r}(t)$
+de acuerdo con la Segunda Ley de Newton, en un campo de fuerza
+$\mathbf{F}=-\nabla V$ (campo de potencial).
+
+La energía total es constante
+definimos la energía total como
+\[
+  E = \tfrac{1}{2}m\|\mathbf{r}'(t)\|^2 + V(\mathbf{r}(t)).
+\]
+y pues diferenciamos respecto a $t$ usando la regla de la cadena:
+\begin{align*}
+  \frac{dE}{dt}
+  &= m\,\mathbf{r}'(t)\cdot\mathbf{r}''(t)
+    + \nabla V(\mathbf{r}(t))\cdot\mathbf{r}'(t) \\
+  &= \mathbf{r}'(t)\cdot\bigl[m\mathbf{r}''(t) + \nabla V(\mathbf{r}(t))\bigr] \\
+  &= \mathbf{r}'(t)\cdot\bigl[\mathbf{F}(\mathbf{r}(t)) - \mathbf{F}(\mathbf{r}(t))\bigr]
+   = 0,
+\end{align*}
+donde usamos $m\mathbf{r}''(t)=\mathbf{F}(\mathbf{r}(t))=-\nabla V(\mathbf{r}(t))$.
+Entonces $E$ es constante y sabemos que entonces la energía se conserva
+
+la partícula se mueve sobre una superficie equipotencial, su rapidez es constante
+
+Una superficie equipotencial cumple $V(\mathbf{r}(t))=c$ (constante).
+Diferenciando: $\nabla V(\mathbf{r}(t))\cdot\mathbf{r}'(t)=0$.
+Como $E$ es constante (parte (a)) y $V(\mathbf{r}(t))$ también lo es,
+\[
+  \tfrac{1}{2}m\|\mathbf{r}'(t)\|^2 = E - c = \text{constante},
+\]
+así que $\|\mathbf{r}'(t)\|$ es constante, La rapidez no cambia. $\square$
         \vspace{5cm}
     \end{respuesta}
 
     \item Leer y hacer un resumen de la Sección 4.5 de la página 291 de [3].
 
-    \begin{respuesta}[title=P15.11 — David]
+    \begin{respuesta}[title=P15.11]
+
+La Sección 4.5 presenta aplicaciones de las derivadas de orden superior a la
+mecánica clásica, la geometría y la economía, el hilo conductor es la
+segunda ley de Newton aplicada a campos de potencial:
+\[
+  m\boldsymbol{\sigma}''(t) = \mathbf{F}(\boldsymbol{\sigma}(t)),
+\]
+donde $\mathbf{F}$ es un campo vectorial definido en un dominio $U\subset\mathbb{R}^3$.
+
+Campos de potencial y conservación de energía
+
+Si $\mathbf{F}=-\operatorname{grad}V$ (campo de potencial con potencial $V$),
+entonces la cantidad
+\[
+  E(t) = \tfrac{1}{2}m\|\boldsymbol{\sigma}'(t)\|^2 + V(\boldsymbol{\sigma}(t))
+\]
+es constante a lo largo de cualquier trayectoria (energía total = energía
+cinética + potencial).  La demostración usa la regla de la cadena exactamente
+como en el punto 10(a).
+\textbf{Posiciones de equilibrio}
+\\
+Un punto $\mathbf{x}_0\in U$ es una posición de equilibrio si
+$\mathbf{F}(\mathbf{x}_0)=\mathbf{0}$, para un campo de potencial, esto
+equivale a $\nabla V(\mathbf{x}_0)=\mathbf{0}$, es decir, $\mathbf{x}_0$ es
+un punto crítico de $V$.
+
+Una posición de equilibrio $\mathbf{x}_0$ es \textbf{estable} si cualquier
+partícula que comienza cerca de $\mathbf{x}_0$ con poca energía cinética
+permanece cerca para siempre.  El \textbf{Teorema 13} establece:
+
+\begin{enumerate}
+  \item Los puntos críticos de $V$ son posiciones de equilibrio.
+  \item Si $\mathbf{x}_0$ es un mínimo local estricto de $V$, entonces
+        $\mathbf{x}_0$ es una posición de equilibrio estable.
+\end{enumerate}
+
+La idea intuitiva es clara: si $V$ tiene un mínimo en $\mathbf{x}_0$ y la
+partícula comienza con poca energía cinética, la conservación de energía
+impide que $V(\boldsymbol{\sigma}(t))$ crezca demasiado, lo cual atrapa a la
+partícula cerca del mínimo.
+
+\textbf{Conexión con las EDO}
+
+Todo este análisis se basa en resolver (o estudiar cualitativamente) la EDO
+vectorial $m\boldsymbol{\sigma}''=\mathbf{F}(\boldsymbol{\sigma})$, que es un
+sistema de ecuaciones diferenciales de segundo orden, Lla conservación de
+energía es un \textbf{integral primera} del sistema: una cantidad que no cambia
+a lo largo de las soluciones y que permite entender su comportamiento sin
+resolverlas explícitamente.
+
         \vspace{5cm}
     \end{respuesta}
 
     \item Revisar y hacer un análisis del Ejemplo 7 en la página 396 de [3].
 
-    \begin{respuesta}[title=P15.12 — David]
+    \begin{respuesta}[title=P15.12]
+    esta describe el campo gravitacional de Newton como un
+campo vectorial en $\mathbb{R}^3$:
+\[
+  \mathbf{F}(\mathbf{r}) = -\frac{mMG}{r^3}\,\mathbf{r},
+  \qquad r = \|\mathbf{r}\|.
+\]
+Aquí, $M$ es la masa del cuerpo central (por ejemplo, la Tierra), $m$ es la masa de la partícula (satélite, nave espacial),
+$G\approx 6{,}67\times10^{-11}\,\text{N·m}^2/\text{kg}^2$ es la constante gravitacional, el signo negativo indica que la fuerza apunta hacia el origen (la atracción).
+
+
+Este campo es un campo de potencial $\mathbf{F}=-\nabla V$ con
+$V(\mathbf{r})=-GmM/r$, por tanto conserva energía, y todos los resultados de
+la Sección 4.5 se aplican, en particular, el origen ($r=0$) no es parte del
+dominio esa es una singularidad física (el centro del cuerpo masivo).
+
+\medskip
+La figura 3.3.4 del libro muestra gráficamente que los vectores del campo
+apuntan hacia el centro en todas las direcciones y su magnitud decrece con
+la distancia, eso concuerda con la ley del inverso del cuadrado:
+$\|\mathbf{F}\|\propto 1/r^2$.
         \vspace{5cm}
     \end{respuesta}
 

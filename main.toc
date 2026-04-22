@@ -1,10 +1,10 @@
 \babel@toc {spanish}{}\relax 
 \contentsline {section}{\numberline {1}Repaso:}{2}{section.1}%
-\contentsline {section}{\numberline {2}Problemas Rutinarios:}{11}{section.2}%
-\contentsline {section}{\numberline {3}Lectura, Escritura y Exposición:}{26}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Resumen — Capítulo 4}{26}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Resumen — Capítulo 5}{26}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Crítica escrita}{27}{subsection.3.3}%
-\contentsline {section}{\numberline {4}Problemas No Rutinarios:}{28}{section.4}%
-\contentsline {section}{\numberline {5}Análisis Numérico o Computacional:}{41}{section.5}%
-\contentsline {section}{References}{45}{Item.28}%
+\contentsline {section}{\numberline {2}Problemas Rutinarios:}{17}{section.2}%
+\contentsline {section}{\numberline {3}Lectura, Escritura y Exposición:}{34}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Resumen — Capítulo 4}{34}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Resumen — Capítulo 5}{34}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Crítica escrita}{35}{subsection.3.3}%
+\contentsline {section}{\numberline {4}Problemas No Rutinarios:}{36}{section.4}%
+\contentsline {section}{\numberline {5}Análisis Numérico o Computacional:}{53}{section.5}%
+\contentsline {section}{References}{57}{Item.33}%

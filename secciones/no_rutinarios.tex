@@ -20,73 +20,387 @@ identificar razones y causas matemáticas para resolverlas.
 
 % ── Ejercicio 18 ────────────────────────────
 \subsection*{Ejercicio 18 \quad\normalfont\small(pág. 34, [2])}
+EDO con factor integrante
 
-\begin{enunciado}{Enunciado}
-    \textit{[Transcribir el enunciado del ejercicio 18 aquí.]}
+vale la pena recordar que en la ecuaci\'on $y' + p(t)\,y = g(t)$, el factor
+integrante es $\mu(t) = e^{\int p(t)\,dt}$ y la soluci\'on general es:
+\[
+  y(t) = \frac{1}{\mu(t)}\left[\int \mu(t)\,g(t)\,dt + C\right].
+\]
+
+Recorderis rapido de clase.
+
+\begin{enunciado}{18.}
+    \textit{[Problema, Considere el PVI]}
 \end{enunciado}
 
 \begin{respuesta}
-    % David — desarrollo y solución
+\[
+  y' + \frac{2}{3}\,y = 1 - \frac{1}{2}\,t, \qquad y(0) = y_0.
+\]
+encuentre el valor de $y_0$ para el cual la soluci\'on toca, pero no cruza,
+el eje $t$.
+
+va el factor integrante: $p(t) = \tfrac{2}{3}$, entonces
+\[
+  \mu(t) = e^{\frac{2}{3}t}.
+\]
+multiplicamos:
+\[
+  \frac{d}{dt}\!\left[e^{\frac{2}{3}t}y\right] = e^{\frac{2}{3}t}\!\left(1 - \frac{t}{2}\right).
+\]
+integramos el lado derecho por partes:
+\[
+  \int e^{\frac{2}{3}t}\!\left(1-\frac{t}{2}\right)dt
+  = \frac{3}{2}e^{\frac{2}{3}t} - \frac{1}{2}\int t\,e^{\frac{2}{3}t}\,dt.
+\]
+para $\displaystyle\int t\,e^{\frac{2}{3}t}\,dt$, usamos integraci\'on por partes
+($u=t$, $dv = e^{\frac{2}{3}t}dt$):
+\[
+  \int t\,e^{\frac{2}{3}t}\,dt = \frac{3t}{2}\,e^{\frac{2}{3}t} - \frac{9}{4}\,e^{\frac{2}{3}t} + C_1.
+\]
+entonces:
+\[
+  e^{\frac{2}{3}t}y = \frac{3}{2}e^{\frac{2}{3}t} - \frac{1}{2}\!\left(\frac{3t}{2} - \frac{9}{4}\right)e^{\frac{2}{3}t} + C
+  = \left(\frac{3}{2} - \frac{3t}{4} + \frac{9}{8}\right)e^{\frac{2}{3}t} + C.
+\]
+dividimos entre $e^{\frac{2}{3}t}$:
+\[
+  y(t) = \frac{21}{8} - \frac{3t}{4} + C\,e^{-\frac{2}{3}t}.
+\]
+con $y(0) = y_0$:
+\[
+  y_0 = \frac{21}{8} + C \implies C = y_0 - \frac{21}{8}.
+\]
+la soluci\'on es:
+\[
+  y(t) = \frac{21}{8} - \frac{3t}{4} + \left(y_0 - \frac{21}{8}\right)e^{-\frac{2}{3}t}.
+\]
+para que la soluci\'on toque pero no cruce el eje, la condici\'on es que
+exista $t^*$ tal que $y(t^*)=0$ y $y'(t^*)=0$ simult\'aneamente (punto de tangencia),
+
+de $y'(t^*) = 0$:
+\[
+  -\frac{3}{4} - \frac{2}{3}\left(y_0 - \frac{21}{8}\right)e^{-\frac{2}{3}t^*} = 0
+  \implies
+  e^{-\frac{2}{3}t^*} = \frac{-3/4}{\frac{2}{3}(y_0 - \frac{21}{8})}.
+\]
+
+de $y(t^*)=0$:
+\[
+  \frac{21}{8} - \frac{3t^*}{4} + \left(y_0 - \frac{21}{8}\right)e^{-\frac{2}{3}t^*} = 0.
+\]
+sustituyendo la expresi\'on de $e^{-\frac{2}{3}t^*}$:
+\[
+  \frac{21}{8} - \frac{3t^*}{4} + \left(y_0 - \frac{21}{8}\right)\cdot\frac{-3/4}{\frac{2}{3}(y_0-\frac{21}{8})}
+  = \frac{21}{8} - \frac{3t^*}{4} - \frac{9}{8} = 0.
+\]
+resolviendo para $t^*$:
+\[
+  \frac{3t^*}{4} = \frac{21}{8} - \frac{9}{8} = \frac{12}{8} = \frac{3}{2}
+  \implies t^* = 2.
+\]
+con $t^* = 2$ determinamos $C$:
+\[
+  e^{-\frac{4}{3}} = \frac{-3/4}{\frac{2}{3}(y_0-\frac{21}{8})}
+  \implies y_0 - \frac{21}{8} = \frac{-9/8}{e^{-4/3}} = -\frac{9}{8}\,e^{4/3}.
+\]
+entonces:
+\[
+  \boxed{y_0 = \frac{21}{8} - \frac{9}{8}\,e^{4/3} \approx 2.625 - 3.323 \approx -0.698.}
+\]
     \vspace{7cm}
 \end{respuesta}
 
 % ── Ejercicio 20 ────────────────────────────
 \subsection*{Ejercicio 20 \quad\normalfont\small(pág. 34, [2])}
 
-\begin{enunciado}{Enunciado}
-    \textit{[Transcribir el enunciado del ejercicio 20 aquí.]}
+\begin{enunciado}{20.}
+    \textit{[Problema.]}
 \end{enunciado}
 
 \begin{respuesta}
-    % David — desarrollo y solución
+\[
+  y' - y = 1 + 3\sin(t), \qquad y(0) = y_0.
+\]
+Encuentre el valor de $y_0$ para el cual la soluci\'on permanece acotada
+cuando $t \to \infty$.
+
+va de nuevo el factor integrante: $p(t) = -1$, luego $\mu(t) = e^{-t}$.
+
+Multiplicamos:
+\[
+  \frac{d}{dt}\!\left[e^{-t}y\right] = e^{-t}(1 + 3\sin t).
+\]
+integramos:
+\[
+  e^{-t}y = \int e^{-t}\,dt + 3\int e^{-t}\sin t\,dt.
+\]
+\[
+  \int e^{-t}\,dt = -e^{-t} + C_1.
+\]
+para $\int e^{-t}\sin t\,dt$ usamos la f\'ormula est\'andar:
+\[
+  \int e^{-t}\sin t\,dt = \frac{e^{-t}(-\sin t - \cos t)}{2} + C_2.
+\]
+Entonces:
+\[
+  e^{-t}y = -e^{-t} + 3\cdot\frac{e^{-t}(-\sin t - \cos t)}{2} + C.
+\]
+dividimos entre $e^{-t}$:
+\[
+  y(t) = -1 - \frac{3}{2}(\sin t + \cos t) + C\,e^{t}.
+\]
+Para que $y(t)$ sea acotada cuando $t\to\infty$, debemos tener $C = 0$
+(pues $e^t \to \infty$).
+
+con $C = 0$ y la condici\'on inicial:
+\[
+  y_0 = -1 - \frac{3}{2}(0 + 1) = -1 - \frac{3}{2} = -\frac{5}{2}.
+\]
+\[
+  \boxed{y_0 = -\frac{5}{2}.}
+\]
+Entonces la solución es:
+\[
+  y(t) = -1 - \frac{3}{2}\sin t - \frac{3}{2}\cos t,
+\]
+que oscila acotadamente.
     \vspace{7cm}
 \end{respuesta}
 
 % ── Ejercicio 21 ────────────────────────────
 \subsection*{Ejercicio 21 \quad\normalfont\small(pág. 34, [2])}
 
-\begin{enunciado}{Enunciado}
-    \textit{[Transcribir el enunciado del ejercicio 21 aquí.]}
+\begin{enunciado}{21.}
+    \textit{[Problema.]}
 \end{enunciado}
 
 \begin{respuesta}
-    % David — desarrollo y solución
+\[
+  y' - \frac{3}{2}\,y = 3t + 2e^t, \qquad y(0) = y_0.
+\]
+Encuentre el valor cr\'itico de $y_0$ que separa las soluciones que crecen positivamente de las que crecen negativamente cuando $t\to\infty$.
+
+Factor integrante: $\mu(t) = e^{-\frac{3}{2}t}$.
+
+\[
+  \frac{d}{dt}\!\left[e^{-\frac{3}{2}t}y\right] = e^{-\frac{3}{2}t}(3t + 2e^t)
+  = 3t\,e^{-\frac{3}{2}t} + 2e^{-\frac{1}{2}t}.
+\]
+Integramos cada t\'ermino:
+\[
+  \int 3t\,e^{-\frac{3}{2}t}\,dt:
+  \quad\text{por partes con } u=3t,\;dv=e^{-\frac{3}{2}t}dt:
+\]
+\[
+  = 3t\cdot\left(-\frac{2}{3}\right)e^{-\frac{3}{2}t} - \int (-2)\,e^{-\frac{3}{2}t}\,dt
+  = -2t\,e^{-\frac{3}{2}t} - \frac{4}{3}\,e^{-\frac{3}{2}t}.
+\]
+\[
+  \int 2\,e^{-\frac{1}{2}t}\,dt = -4\,e^{-\frac{1}{2}t}.
+\]
+entonces va:
+\[
+  e^{-\frac{3}{2}t}y = -2t\,e^{-\frac{3}{2}t} - \frac{4}{3}\,e^{-\frac{3}{2}t} - 4\,e^{-\frac{1}{2}t} + C.
+\]
+Dividimos entre $e^{-\frac{3}{2}t}$:
+\[
+  y(t) = -2t - \frac{4}{3} - 4\,e^{t} + C\,e^{\frac{3}{2}t}.
+\]
+con $y(0) = y_0$:
+\[
+  y_0 = -\frac{4}{3} - 4 + C = C - \frac{16}{3}
+  \implies C = y_0 + \frac{16}{3}.
+\]
+La soluci\'on es:
+\[
+  y(t) = -2t - \frac{4}{3} - 4e^t + \left(y_0 + \frac{16}{3}\right)e^{\frac{3}{2}t}.
+\]
+Cuando $t\to\infty$, el t\'ermino dominante es $\left(y_0+\frac{16}{3}\right)e^{\frac{3}{2}t}$:
+\begin{itemize}
+  \item Si $y_0 + \tfrac{16}{3} > 0$, la soluci\'on $\to +\infty$.
+  \item Si $y_0 + \tfrac{16}{3} < 0$, la soluci\'on $\to -\infty$.
+  \item Si $y_0 + \tfrac{16}{3} = 0$, el t\'ermino $e^{\frac{3}{2}t}$ desaparece y la soluci\'on $\to -\infty$ por $-4e^t$.
+\end{itemize}
+el valor cr\'itico es:
+\[
+  \boxed{y_0 = -\frac{16}{3} \approx -5.333.}
+\]
     \vspace{7cm}
 \end{respuesta}
 
 % ── Ejercicio 22 ────────────────────────────
 \subsection*{Ejercicio 22 \quad\normalfont\small(pág. 34, [2])}
 
-\begin{enunciado}{Enunciado}
-    \textit{[Transcribir el enunciado del ejercicio 22 aquí.]}
+\begin{enunciado}{22.}
+    \textit{[Problema.]}
 \end{enunciado}
 
 \begin{respuesta}
-    % David — desarrollo y solución
+\[
+  2y' + ty = 2, \quad\text{o equivalentemente}\quad
+  y' + \frac{t}{2}\,y = 1, \qquad y(0) = 1.
+\]
+Mostrar que todas las soluciones de $2y'+ty=2$ se aproximan a un l\'imite
+cuando $t\to\infty$, y encontrar ese l\'imite.
+
+reescribimos en forma est\'andar: $p(t) = \tfrac{t}{2}$.
+
+Factor integrante:
+\[
+  \mu(t) = e^{\int \frac{t}{2}\,dt} = e^{t^2/4}.
+\]
+Multiplicamos:
+\[
+  \frac{d}{dt}\!\left[e^{t^2/4}y\right] = e^{t^2/4}.
+\]
+integrando:
+\[
+  e^{t^2/4}y = \int_0^t e^{s^2/4}\,ds + C.
+\]
+la integral $\displaystyle\int_0^t e^{s^2/4}\,ds$ no tiene forma cerrada elemental,
+pero con el cambio $u = s/2$ se relaciona con la funci\'on de Dawson / integral de
+error imaginaria. As\'i:
+\[
+  y(t) = e^{-t^2/4}\int_0^t e^{s^2/4}\,ds + C\,e^{-t^2/4}.
+\]
+Con $y(0) = 1$: $1 = 0 + C$, luego $C=1$.
+
+\textbf{L\'imite cuando $t\to\infty$.} Aplicamos la clasica L'H\^opital al
+t\'ermino $e^{-t^2/4}\int_0^t e^{s^2/4}\,ds$:
+
+\[
+  \lim_{t\to\infty} \frac{\displaystyle\int_0^t e^{s^2/4}\,ds}{e^{t^2/4}}
+  \overset{\mathrm{L'H}}{=}
+  \lim_{t\to\infty} \frac{e^{t^2/4}}{\tfrac{t}{2}\,e^{t^2/4}}
+  = \lim_{t\to\infty} \frac{2}{t} = 0.
+\]
+El segundo t\'ermino $e^{-t^2/4}\to 0$. Por lo tanto:
+\[
+  \boxed{\lim_{t\to\infty} y(t) = 0 \quad \text{para toda condici\'on inicial } y_0.}
+\]
+Todas las soluciones convergen a $0$.
     \vspace{7cm}
 \end{respuesta}
 
 % ── Ejercicio 26 ────────────────────────────
 \subsection*{Ejercicio 26 \quad\normalfont\small(pág. 34, [2])}
 
-\begin{enunciado}{Enunciado}
-    \textit{[Transcribir el enunciado del ejercicio 26 aquí.]}
+\begin{enunciado}{26.}
+    \textit{[Problema.]}
 \end{enunciado}
 
 \begin{respuesta}
-    % David — desarrollo y solución
+Construir una EDO lineal de primer orden cuyas soluciones sean
+as\'intotas a la recta $y = 2t - 5$ cuando $t\to\infty$.
+
+Buscamos entonces la soluci\'on particular $y_p(t) = 2t - 5$.
+Para una EDO lineal $y' + p(t)\,y = g(t)$, la soluci\'on general es
+$y = y_p + C\,e^{-\int p\,dt}$.
+
+Para que las soluciones sean as\'intotas a $y_p$, necesitamos que
+$C\,e^{-\int p\,dt} \to 0$ cuando $t\to\infty$, lo que ocurre si $p(t) > 0$.
+
+tomemos entonces $p(t) = 1$ (la elecci\'on m\'as simple). Entonces la EDO es:
+\[
+  y' + y = g(t).
+\]
+se reemplaza $y_p = 2t-5$:
+\[
+  g(t) = y_p' + y_p = 2 + (2t-5) = 2t - 3.
+\]
+La EDO es:
+\[
+  \boxed{y' + y = 2t - 3.}
+\]
+Verificaci\'on. Con $\mu = e^t$:
+\[
+  y(t) = e^{-t}\int e^t(2t-3)\,dt + Ce^{-t}.
+\]
+por partes: $\int e^t(2t-3)\,dt = e^t(2t-5)+C_1$.
+
+\[
+  y(t) = (2t-5) + Ce^{-t}.
+\]
+cuando $t\to\infty$, $Ce^{-t}\to 0$, as\'i que $y(t)\to 2t-5$. 
     \vspace{7cm}
 \end{respuesta}
 
 % ── Ejercicio 28 ────────────────────────────
 \subsection*{Ejercicio 28 \quad\normalfont\small(pág. 34, [2])}
 
-\begin{enunciado}{Enunciado}
-    \textit{[Transcribir el enunciado del ejercicio 28 aquí.]}
+\begin{enunciado}{28.}
+    \textit{[Problema.]}
 \end{enunciado}
 
 \begin{respuesta}
-    % David — desarrollo y solución
+ \textbf{Variaci\'on de par\'ametros.} Esto es pura EDO lineal general
+de primer orden:
+\[
+  y' + p(t)\,y = g(t). \tag{48}
+\]
+
+\begin{enumerate}[label=\textbf{\alph*.}]
+
+\item Si $g(t) = 0$, mostrar que la soluci\'on es:
+\[
+  y = A\exp\!\left(-\int p(t)\,dt\right). \tag{49}
+\]
+
+\item Si $g(t)\not\equiv 0$, suponer que la soluci\'on tiene la forma
+$y = A(t)\exp\!\left(-\int p(t)\,dt\right)$ y mostrar que $A(t)$ debe satisfacer:
+\[
+  A'(t) = g(t)\exp\!\left(\int p(t)\,dt\right). \tag{51}
+\]
+
+\item Encontrar $A(t)$ e integrar para obtener la soluci\'on de (48) y verificar
+que coincide con la f\'ormula del factor integrante.
+
+\end{enumerate}
+
+Soluci\'on.
+
+ Con $g(t)=0$, la ecuaci\'on es $y' = -p(t)\,y$, que es separable:
+\[
+  \frac{dy}{y} = -p(t)\,dt
+  \implies \ln|y| = -\int p(t)\,dt + C_1
+  \implies y = A\exp\!\left(-\int p(t)\,dt\right), \quad A = \pm e^{C_1}.
+\]
+
+suponga $y = A(t)\exp\!\left(-\int p(t)\,dt\right)$. Calculamos $y'$:
+\[
+  y' = A'(t)\exp\!\left(-\int p\,dt\right) + A(t)\cdot\left(-p(t)\right)\exp\!\left(-\int p\,dt\right).
+\]
+Sustituimos en (48):
+\begin{align*}
+  A'e^{-\int p\,dt} - A\,p\,e^{-\int p\,dt} + p\,A\,e^{-\int p\,dt} &= g(t)\\
+  A'(t)\,e^{-\int p\,dt} &= g(t).
+\end{align*}
+dividiendo entre $e^{-\int p\,dt}$:
+\[
+  \boxed{A'(t) = g(t)\exp\!\left(\int p(t)\,dt\right).} \tag{51}
+\]
+
+\textbf{(c)} Integrando (51):
+\[
+  A(t) = \int g(t)\,e^{\int p\,dt}\,dt + C.
+\]
+la soluci\'on es:
+\[
+  y = \left[\int g(t)\,e^{\int p\,dt}\,dt + C\right] e^{-\int p\,dt}.
+\]
+Si definimos $\mu(t) = e^{\int p\,dt}$, esto es equivalente a:
+\[
+  \mu\,y = \int \mu\,g\,dt + C
+  \quad\Longleftrightarrow\quad
+  \frac{d}{dt}[\mu\,y] = \mu\,g(t),
+\]
+que es exactamente la f\'ormula que se obtiene multiplicando (48) por el factor
+integrante $\mu(t)$. 
+
+
+
     \vspace{7cm}
 \end{respuesta}
 
